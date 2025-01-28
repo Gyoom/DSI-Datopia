@@ -16,12 +16,12 @@ public class ScrollingRiver : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        spriteSize = riverRenderer.mesh.bounds.size.y * riverRenderer.transform.localScale.y;
+        spriteSize = riverRenderer.mesh.bounds.size.z * riverRenderer.transform.localScale.z;
     }
 
     void Update()
     {
         float newPos = Mathf.Repeat(Time.time * backgroundSpeed, spriteSize);
-        transform.position = startPosition + Vector3.down * newPos;
+        transform.position = startPosition + Vector3.back * newPos;
     }
 }
