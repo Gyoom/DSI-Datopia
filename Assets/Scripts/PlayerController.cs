@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Side currentSide = Side.Mid;
+    [SerializeField] private bool SwipeLeft;
+    [SerializeField] private bool SwipeRight;
+
     Rigidbody2D rb;
-    // Start is called before the first frame update
+
+    float newPos = 0f;
+
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
         rb.velocity = Vector3.zero;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
     }
 }
+
+public enum Side { Left, Mid, Right }
