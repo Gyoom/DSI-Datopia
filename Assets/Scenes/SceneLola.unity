@@ -264,6 +264,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2466340004920766902, guid: 00f34386a8b50c147a6d6d06964d7954, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863466156735410191, guid: 00f34386a8b50c147a6d6d06964d7954, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9030211407353946537, guid: 00f34386a8b50c147a6d6d06964d7954, type: 3}
       propertyPath: m_Name
       value: Banks1 (1)
@@ -599,8 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f97f292ad2c014096a10006ec57234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundScrolling: 1
-  backgroundSpeed: 30
+  player: {fileID: 0}
+  isScrolling: 1
+  backgroundSpeed: 40
   blocksParent: {fileID: 667631341}
   blocks:
   - {fileID: 1742256017}
@@ -608,16 +617,16 @@ MonoBehaviour:
   - {fileID: 1449803173}
   BlockLength: 100
   blockOffset: 0
-  xValue: 0
   xValueOffset: 65
   RangeBlocksCountBeforeNextJunction: {x: 1, y: 1}
+  xValue: 0
+  nextBlockDecount: 0
   right: {fileID: 9030211407353946537, guid: 00f34386a8b50c147a6d6d06964d7954, type: 3}
   junction: {fileID: 2070053393912757193, guid: 300b02c70d92475458a59c47d61e48ed, type: 3}
   postJunction: {fileID: 720523615337658086, guid: 257f60940ea5c244fb6b49dce75f859e, type: 3}
   comebackAmount: 50
   comebackDelay: 0.5
   junctionPending: 0
-  nextBlockDecount: 0
 --- !u!1 &742155230 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9030211407353946537, guid: 00f34386a8b50c147a6d6d06964d7954, type: 3}
