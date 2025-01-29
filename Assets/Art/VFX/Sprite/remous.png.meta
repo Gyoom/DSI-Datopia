@@ -102,10 +102,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 166
-        width: 166
+        width: 110.666664
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: remous_1
       rect:
         serializedVersion: 2
-        x: 166
+        x: 110
         y: 166
-        width: 166
+        width: 110.666664
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: remous_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 166
+        x: 220
+        y: 166
+        width: 110.666664
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: remous_3
       rect:
         serializedVersion: 2
-        x: 166
+        x: 0
         y: 0
-        width: 166
+        width: 110.666664
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,6 +176,48 @@ TextureImporter:
       bones: []
       spriteID: 3f743cfb225f28547883b6ba94928569
       internalID: -1164854601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: remous_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 110.666664
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88ac832540b6764cb291d0767e4904e
+      internalID: -1706625860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: remous_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 110.666664
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2447f07086f2f47999e80beaf6fa51
+      internalID: -174959321
       vertices: []
       indices: 
       edges: []
@@ -195,6 +237,8 @@ TextureImporter:
       remous_1: -1668390531
       remous_2: -916836901
       remous_3: -1164854601
+      remous_4: -1706625860
+      remous_5: -174959321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

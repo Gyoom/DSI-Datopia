@@ -468,7 +468,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1718,7 +1718,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0.1, y: 0.2}
-    tilesX: 2
+    tilesX: 3
     tilesY: 2
     animationType: 0
     rowIndex: 0
@@ -5139,8 +5139,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903161239}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052596, y: -0, z: -0, w: 0.99144495}
-  m_LocalPosition: {x: 0, y: 4.79, z: -10}
+  m_LocalRotation: {x: -0.6607394, y: 0.0027001707, z: -0.0023766884, w: -0.7506067}
+  m_LocalPosition: {x: 0.23261094, y: 4.783438, z: -0.448555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5156,7 +5156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 864519218383104912, guid: 6d9486f83ccfb1845ab1ed548fcd132d, type: 3}
       propertyPath: m_Name
-      value: PS_Particules
+      value: PS_Gougouttes
       objectReference: {fileID: 0}
     - target: {fileID: 2500169869573466450, guid: 6d9486f83ccfb1845ab1ed548fcd132d, type: 3}
       propertyPath: looping
