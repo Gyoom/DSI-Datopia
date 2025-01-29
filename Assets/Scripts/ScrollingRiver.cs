@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class ScrollingRiver : MonoBehaviour
 {
+    
+    [Header("Refs")]
+    [SerializeField] private GameObject player; 
+    [Header("Scrolling")]
+
     [SerializeField]
-    private bool backgroundScrolling = true;
+    private bool isScrolling = true;
     [SerializeField]
     private float backgroundSpeed = 0.1f;
     [SerializeField]
@@ -18,11 +23,12 @@ public class ScrollingRiver : MonoBehaviour
     [SerializeField]
     private float blockOffset = 20f;
     [SerializeField]
-    public float xValue = 0f;
-    [SerializeField]
     public float xValueOffset = 65f;
     [SerializeField]
     private Vector2Int RangeBlocksCountBeforeNextJunction = new Vector2Int(1, 1);
+
+    [Header("In Game")]
+    public float xValue = 0f;
     [SerializeField] private int nextBlockDecount = 0;
 
     [Header("Prefabs")]
@@ -41,7 +47,6 @@ public class ScrollingRiver : MonoBehaviour
     [HideInInspector] public bool junctionPending;
     private int blockCount = 0;
 
-
     private void Start()
     {
         SetBlockDecount();
@@ -49,24 +54,35 @@ public class ScrollingRiver : MonoBehaviour
 
     void Update()
     {   
-        if (!backgroundScrolling)
+        if (!isScrolling && blocks.Count > 0)
             return;
 
+        // move amount
         float move = Time.deltaTime * backgroundSpeed;
         moveCount += move;
+
+        // apply move
+        List<GameObject> blocksToDelete = new List<GameObject>();
         foreach (var block in blocks) {
-            block.transform.position += Vector3.back * move;   
+            block.transform.position += Vector3.back * move;
+            if (block.transform.position.z < player.transform.position.z - BlockLength * 2f) { 
+                blocksToDelete.Add(block);
+            }
         }
 
-        if (blocks.Count > 0 && moveCount >= BlockLength) {
-            GameObject toDelete = blocks[0];
-            blocks.RemoveAt(0);
-            Destroy(toDelete);
+        // delete
+        foreach (var block in blocksToDelete)
+        {
+          Destroy(block);
+        }
+        blocks.RemoveAll((gm) => blocksToDelete.Contains(gm));
 
+        // add new
+        if (moveCount >= BlockLength) {
             GameObject newBlockPrefab = GetNextBlock();
             GameObject temp = Instantiate(newBlockPrefab, blocksParent);
-            
-            Vector3 tempPos = new Vector3(xValue, 0, blockOffset + (BlockLength * blocks.Count));
+
+            Vector3 tempPos = new Vector3(xValue, 0, blockOffset + blocks[blocks.Count - 1].transform.position.z + BlockLength);
             temp.transform.localPosition = tempPos;
             
             blocks.Add(temp);
@@ -101,11 +117,14 @@ public class ScrollingRiver : MonoBehaviour
 
     public IEnumerator ComeBack()
     {
-        backgroundScrolling = false;
+        isScrolling = false;
         moveCount -= comebackAmount;
-        transform.DOMoveZ(transform.position.z + comebackAmount, comebackDelay);
+        foreach (var block in blocks)
+        {
+            block.transform.DOMoveZ(block.transform.position.z + comebackAmount, comebackDelay);
+        }
         yield return new WaitForSeconds(comebackDelay);
-        backgroundScrolling = true;
+        isScrolling = true;
 
     } 
 }
