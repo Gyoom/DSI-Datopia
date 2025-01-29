@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool inMove;
 
     [Header("JunctionMove")]
-    [SerializeField] private ScrollingRiver bgScrolling;
+    [SerializeField] private ScrollingManager bgScrolling;
     [SerializeField] private float junctionMoveDelay = 0.5f;
 
     float newPos = 0f;
@@ -75,20 +75,29 @@ public class PlayerController : MonoBehaviour
 
         switch (currentSide) { 
             case Side.Left:
-                transform.DOMoveX(transform.position.x - offSet, junctionMoveDelay);
+                float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
+                transform.DOMoveX(xDestLeft, junctionMoveDelay);
                 bgScrolling.xValue -= offSet;
                 xCenterValue -= offSet;
                 bgScrolling.junctionPending = false;
+                currentSide = Side.Mid;
+                UIManager.Instance.EmptyJonctionText();
                 break;
+
             case Side.Mid:
                 StartCoroutine(bgScrolling.ComeBack());
                 break;
+
             case Side.Right:
-                transform.DOMoveX(transform.position.x + offSet, junctionMoveDelay);
+                float xDestRight = transform.position.x + offSet + (xCenterValue - transform.position.x);
+                transform.DOMoveX(xDestRight, junctionMoveDelay);
                 bgScrolling.xValue += offSet;
                 xCenterValue += offSet;
                 bgScrolling.junctionPending = false;
+                currentSide = Side.Mid;
+                UIManager.Instance.EmptyJonctionText();
                 break;
+
             default:
                 break;
         }

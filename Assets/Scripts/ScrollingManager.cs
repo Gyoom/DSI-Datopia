@@ -1,15 +1,24 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class ScrollingRiver : MonoBehaviour
+public class ScrollingManager : MonoBehaviour
 {
     
     [Header("Refs")]
-    [SerializeField] private GameObject player; 
-    [Header("Scrolling")]
+    [SerializeField] private GameObject player;
 
+    [Header("Prefabs")]
+    [SerializeField]
+    private List<GameObject> rights = new List<GameObject>();
+    [SerializeField]
+    private GameObject junction;
+    [SerializeField]
+    private GameObject postJunction;
+
+    [Header("Scrolling")]
     [SerializeField]
     private bool isScrolling = true;
     [SerializeField]
@@ -25,23 +34,24 @@ public class ScrollingRiver : MonoBehaviour
     [SerializeField]
     public float xValueOffset = 65f;
     [SerializeField]
-    private Vector2Int RangeBlocksCountBeforeNextJunction = new Vector2Int(1, 1);
+    private Vector2Int startBlocksCountRange = new Vector2Int(0, 0);
+    [SerializeField]
+    private Vector2Int junctionBlocksCountRange = new Vector2Int(1, 3);
 
-    [Header("In Game")]
-    public float xValue = 0f;
-    [SerializeField] private int nextBlockDecount = 0;
-
-    [Header("Prefabs")]
-    [SerializeField]
-    private GameObject right;
-    [SerializeField]
-    private GameObject junction;
-    [SerializeField]
-    private GameObject postJunction;
+    [Header("Themes")]
+    [SerializeField] private List<ThemeTier> ThemesTiers = new List<ThemeTier>();
+    [SerializeField] [Range(1, 4)] private int nbrUseByTier = 1;
+    private int currentTierIndex = 0;
+    private int currentTierUseCount = 0;
+    private List<ThemePair> usedPair = new List<ThemePair>(); 
 
     [Header("Comeback")]
     [SerializeField] private float comebackAmount = 20f;
     [SerializeField] private float comebackDelay = 0.5f;
+
+    [Header("Values Ingame")]
+    public float xValue = 0f;
+    [SerializeField] private int nextBlockDecount = 0;
 
     private float moveCount = 0f;
     [HideInInspector] public bool junctionPending;
@@ -49,7 +59,7 @@ public class ScrollingRiver : MonoBehaviour
 
     private void Start()
     {
-        SetBlockDecount();
+        SetBlockDecount(true);
     }
 
     void Update()
@@ -96,22 +106,34 @@ public class ScrollingRiver : MonoBehaviour
         if (!junctionPending && nextBlockDecount == 0)
         {
             gm = junction;
-            SetBlockDecount();
+            SetBlockDecount(false);
             junctionPending = true;
+            ThemePair tp = GetNextThemePair();
+            UIManager.Instance.DisplayJonctionText(tp);
         }
         else if (junctionPending) { 
             gm = postJunction;
         } else {
-            gm = right;
+            gm = rights[Random.Range(0, rights.Count)];
             nextBlockDecount--;
         }
 
         return gm;
     }
 
-    private void SetBlockDecount() {
-        int min = RangeBlocksCountBeforeNextJunction.x;
-        int max = RangeBlocksCountBeforeNextJunction.y;
+    private void SetBlockDecount(bool start) {
+        int min = 0;
+        int max = 0;
+
+        if (start)
+        {
+            min = startBlocksCountRange.x;
+            max = startBlocksCountRange.y;
+        }
+        else {
+            min = junctionBlocksCountRange.x;
+            max = junctionBlocksCountRange.y;
+        }
         nextBlockDecount = Random.Range(min, max + 1);
     }
 
@@ -126,5 +148,31 @@ public class ScrollingRiver : MonoBehaviour
         yield return new WaitForSeconds(comebackDelay);
         isScrolling = true;
 
-    } 
+    }
+
+    private ThemePair GetNextThemePair() {
+        ThemeTier currentTier = ThemesTiers[currentTierIndex];
+        List<ThemePair> tempList = new List<ThemePair>();
+
+        foreach (var item in currentTier.choiceList)
+        {
+            if (!usedPair.Contains(item))
+                tempList.Add(item);
+        }
+
+        if (tempList.Count == 0)
+            return null;
+        else { 
+            ThemePair currentPair = tempList[Random.Range(0, tempList.Count)];
+            usedPair.Add(currentPair);
+            currentTierUseCount++;
+            if (currentTierUseCount == nbrUseByTier) { 
+                currentTierUseCount = 0;
+                currentTierIndex++;
+            }
+
+            return currentPair;
+        } 
+
+    }
 }
