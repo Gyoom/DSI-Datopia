@@ -7,6 +7,8 @@ using UnityEngine;
 public class ScrollingManager : MonoBehaviour
 {
     
+    public static ScrollingManager instance;
+
     [Header("Refs")]
     [SerializeField] private GameObject player;
 
@@ -60,6 +62,7 @@ public class ScrollingManager : MonoBehaviour
     private void Start()
     {
         SetBlockDecount(true);
+        instance = this;
     }
 
     void Update()
