@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbe76eef3485548b605bad98838739, type: 3}
   m_Name: Amusant
   m_EditorClassIdentifier: 
-  nom: Amusant
-  Description: 
+  nom: Fun
+  Description: Something fun ?
