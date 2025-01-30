@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
-using UnityEngine.SubsystemsImplementation;
-using static UnityEditor.PlayerSettings;
-using System;
 
 public class PlayerController : MonoBehaviour
 {
