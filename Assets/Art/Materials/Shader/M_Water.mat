@@ -72,8 +72,8 @@ Material:
     - _ScrollSpeed: {r: 0.1, g: 0, b: 0, a: 0}
     - _Tiling: {r: 3, g: 3, b: 0, a: 0}
     - _Tiling02: {r: 1, g: 1, b: 0, a: 0}
-    - _TilingPatern4: {r: 1.5, g: 1.5, b: 0, a: 0}
-    - _TillingPattern2: {r: 1, g: 1, b: 0, a: 0}
+    - _TilingPatern4: {r: 0.05, g: 0.05, b: 0, a: 0}
+    - _TillingPattern2: {r: 0.05, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2144073924720006921
 MonoBehaviour:
