@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 currentVelocity;
 
-    void FixedUpdate()
+    private void Start()
     {
         if (player)
         {
@@ -20,6 +20,20 @@ public class CameraController : MonoBehaviour
             Vector3 target = player.transform.position;
             target.z += posOffset.z;
             target.y += posOffset.y;
+            target.x += posOffset.x;
+            transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, timeLerpPos);
+
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (player)
+        {
+            // all directions camera follow
+            Vector3 target = player.transform.position;
+            target.z += posOffset.z;
+            target.y = transform.position.y;
             target.x += posOffset.x;
             transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, timeLerpPos);
 
