@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbe76eef3485548b605bad98838739, type: 3}
   m_Name: "Ext\xE9rieur"
   m_EditorClassIdentifier: 
-  nom: "Ext\xE9rieur"
-  Description: "En extr\xE9rieur ?"
+  nom: Outside
+  Description: Want to go outside?

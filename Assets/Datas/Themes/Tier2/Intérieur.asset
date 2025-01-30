@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbe76eef3485548b605bad98838739, type: 3}
   m_Name: "Int\xE9rieur"
   m_EditorClassIdentifier: 
-  nom: "Int\xE9rieur"
-  Description: "En int\xE9rieur ?"
+  nom: Inside
+  Description: Want to stay inside?
