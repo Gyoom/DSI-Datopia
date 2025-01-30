@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7947584552458775075}
   m_Layer: 0
-  m_Name: Banks3
+  m_Name: Hard_Obstacles1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
