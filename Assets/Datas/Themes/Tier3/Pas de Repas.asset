@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbe76eef3485548b605bad98838739, type: 3}
   m_Name: Pas de Repas
   m_EditorClassIdentifier: 
-  nom: Pas de repas
-  Description: "J'ai pas tr\xE8s faim ?"
+  nom: No meal
+  Description: No meal during a date?
