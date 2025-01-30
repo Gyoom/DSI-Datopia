@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-808450323439688856
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Water
-  m_Shader: {fileID: -6465566751694194690, guid: 7c93e9d76218b51408ca72056ff6c17a, type: 3}
+  m_Name: M_WaterTransluscent
+  m_Shader: {fileID: -6465566751694194690, guid: c438c54c462227243a791ba3e5990269, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,18 +42,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_1e99265bf9344ecea0b368553ff95055_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 1fca79c2188497a42b20de38b6806746, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_61fd77ae958c4c32ab754702c4e8bda5_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: b49257c6c62b5664788e71f2c6acd457, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_b20e2d53e843445fb679e9a1ce317625_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: d6ebf9f5c936ae5408a08e890890322f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_e497a1138c7a4db69a3d316505302605_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: d6ebf9f5c936ae5408a08e890890322f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
@@ -64,45 +65,26 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _ClampMax: 0.1
-    - _ClampMin: -1.51
-    - _FoamAmount: 1
-    - _FoamCutOff: 1
+    - _ClampMin: -0.6
+    - _FoamAmount: 53.37
+    - _FoamCutOff: 17.1
     - _FoamDensity: 15
-    - _Foam_ScrollSpeed: 0.1
+    - _Foam_ScrollSpeed: 0.2
     - _Foamdisorder: 1
     - _Patern2ScrollSpeed: 0.2
-    - _Patern3ScrollSpeed: 0.21
-    - _PatternDisorder: 0
-    - _Pattern_ScrollSpeed: 0.05
+    - _Patern3ScrollSpeed: 0.2
+    - _PatternDisorder: 3
+    - _Pattern_ScrollSpeed: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SpeedFoam: 2.04
-    - _scaleFoam: 93.54
+    - _SpeedFoam: -0.3
+    - _scaleFoam: 7.5
     m_Colors:
-    - _Direction: {r: 0, g: 0, b: 0, a: 0}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 0}
-    - _ScollSpeed2: {r: 0.2, g: 0, b: 0, a: 0}
-    - _ScollSpeed3: {r: 0.3, g: 0, b: 0, a: 0}
-    - _ScrollSpeed: {r: 0.1, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 3, g: 3, b: 0, a: 0}
-    - _Tiling02: {r: 1, g: 1, b: 0, a: 0}
+    - _FoamColor: {r: 0.6463599, g: 0.7830189, b: 0.7408402, a: 1}
     - _TilingPatern4: {r: 0.05, g: 0.05, b: 0, a: 0}
     - _TillingPattern2: {r: 0.05, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2144073924720006921
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0
---- !u!114 &3259662697440755169
+--- !u!114 &3136696422921711055
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
