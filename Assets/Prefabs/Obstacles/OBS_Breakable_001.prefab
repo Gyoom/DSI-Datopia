@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38add83051a357a40a9ef5965003bb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitRecoil: 50
+  hitRecoil: 30
 --- !u!1 &6055184593401124907
 GameObject:
   m_ObjectHideFlags: 0
