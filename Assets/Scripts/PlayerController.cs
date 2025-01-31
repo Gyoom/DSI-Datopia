@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fingerDelay = 0.1f;
    
     [Header("SideMode")]
-    [SerializeField] private Side currentSide = Side.Mid;
+    [SerializeField] private Way currentSide = Way.Mid;
     [SerializeField] private float sideMoveOffset = 5f;
     [SerializeField] private float sideMoveDelay = 0.2f;
     [SerializeField] private bool inMove;
@@ -33,7 +33,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 MouseStartPos;
     private Vector2 MouseEndPos;
 
+    private LayerMask obstacleLayer;
 
+    private void Start()
+    {
+        obstacleLayer = LayerMask.GetMask("Obstacles");
+    }
 
     void Update()
     {
@@ -80,8 +85,15 @@ public class PlayerController : MonoBehaviour
             {
                 switch (hit.transform.gameObject.tag)
                 {
-                    case "Swipable":
+                    case "SwipableObstacle":
                         find = true;
+                        Vector2 SwipeDir = GetSwipDir();
+                        if (SwipeDir.x > 0f)
+                            hit.transform.gameObject.GetComponent<SwipableObstacle>().WaysMove(true);
+
+                        if (SwipeDir.x < 0f)
+                            hit.transform.gameObject.GetComponent<SwipableObstacle>().WaysMove(false);
+
                         break;
                     default:
                         break;
@@ -93,7 +105,6 @@ public class PlayerController : MonoBehaviour
         if (!find) {
             Vector2 SwipeDir = GetSwipDir();
    
-
             if (SwipeDir.x > 0f)
                 WaysInputs(true);
             else if (SwipeDir.x < 0f)
@@ -124,36 +135,36 @@ public class PlayerController : MonoBehaviour
 
         if (!inMove && left)
         {
-            if (currentSide == Side.Mid)
+            if (currentSide == Way.Mid)
             {
                 newPos = xCenterValue - sideMoveOffset;
                 inMove = true;
                 doMove = true;
-                currentSide = Side.Left;
+                currentSide = Way.Left;
             }
-            else if (currentSide == Side.Right)
+            else if (currentSide == Way.Right)
             {
                 newPos = xCenterValue;
                 inMove = true;
                 doMove = true;
-                currentSide = Side.Mid;
+                currentSide = Way.Mid;
             }
         }
         if (!inMove && !left)
         {
-            if (currentSide == Side.Mid)
+            if (currentSide == Way.Mid)
             {
                 newPos = xCenterValue + sideMoveOffset;
                 inMove = true;
                 doMove = true;
-                currentSide = Side.Right;
+                currentSide = Way.Right;
             }
-            else if (currentSide == Side.Left)
+            else if (currentSide == Way.Left)
             {
                 newPos = xCenterValue;
                 inMove = true;
                 doMove = true;
-                currentSide = Side.Mid;
+                currentSide = Way.Mid;
             }
         }
 
@@ -169,11 +180,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpMove()
     {
-        Debug.Log("Jump");
         if (inMove)
             yield break;
-
-        Debug.Log("Jump");
 
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
@@ -217,27 +225,27 @@ public class PlayerController : MonoBehaviour
         float offSet = ScrollingManager.instance.xValueOffset;
 
         switch (currentSide) { 
-            case Side.Left:
+            case Way.Left:
                 float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
                 transform.DOMoveX(xDestLeft, junctionMoveDelay);
                 ScrollingManager.instance.xValue -= offSet;
                 xCenterValue -= offSet;
                 ScrollingManager.instance.junctionPending = false;
-                currentSide = Side.Mid;
+                currentSide = Way.Mid;
                 UIManager.Instance.EmptyJonctionText();
                 break;
 
-            case Side.Mid:
-                StartCoroutine(ScrollingManager.instance.ComeBack());
+            case Way.Mid:
+                StartCoroutine(ScrollingManager.instance.ComeBack(-1f));
                 break;
 
-            case Side.Right:
+            case Way.Right:
                 float xDestRight = transform.position.x + offSet + (xCenterValue - transform.position.x);
                 transform.DOMoveX(xDestRight, junctionMoveDelay);
                 ScrollingManager.instance.xValue += offSet;
                 xCenterValue += offSet;
                 ScrollingManager.instance.junctionPending = false;
-                currentSide = Side.Mid;
+                currentSide = Way.Mid;
                 UIManager.Instance.EmptyJonctionText();
                 break;
 
@@ -248,11 +256,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Aie");
-        if (collision.gameObject.CompareTag("Obstacle")) {
-            StartCoroutine(ScrollingManager.instance.ComeBack());
+        if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
+
+                StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
         }
     }
 }
 
-public enum Side { Left, Mid, Right }
+public enum Way { Left, Mid, Right }
