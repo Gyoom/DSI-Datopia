@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
+  m_Name: Shopping
+  m_EditorClassIdentifier: 
+  AcivityName: Shopping
+  Description: Shopping
+  associatedThemes:
+  - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
+  - {fileID: 11400000, guid: 882ba8590fed8ef4eb4725d43e0229cc, type: 2}
+  - {fileID: 11400000, guid: d3a4a648d454a784095205cd9109fbc7, type: 2}
+  - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
+  - {fileID: 11400000, guid: 83689980acb33d146826edd4c3ed6388, type: 2}
+  - {fileID: 11400000, guid: 8d4f8035c4b7e3f4285b79962efa87ef, type: 2}
+  - {fileID: 11400000, guid: 642cb074a808dfb4882110cc32534e44, type: 2}
+  - {fileID: 11400000, guid: 16b9852c1f87d9c49bef1cdf3a56f18a, type: 2}
+  - {fileID: 11400000, guid: 9f9ff2a35592e68479f1a28eb509cb83, type: 2}
+  - {fileID: 11400000, guid: 9a55679ca48fff04a97400a8479eea15, type: 2}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
+  m_Name: "Cin\xE9ma"
+  m_EditorClassIdentifier: 
+  AcivityName: "Cin\xE9ma"
+  Description: "Cin\xE9ma"
+  associatedThemes:
+  - {fileID: 11400000, guid: 7701ed42b0223ad4e8b656057b7c998c, type: 2}
+  - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}
+  - {fileID: 11400000, guid: 5b94217f9b3ecb04dab6b089697056cd, type: 2}
+  - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
+  - {fileID: 11400000, guid: 2ea297a3c0a12a843ad856c06934a4af, type: 2}
+  - {fileID: 11400000, guid: 16b9852c1f87d9c49bef1cdf3a56f18a, type: 2}
+  - {fileID: 11400000, guid: 41b74f3f0c0a5e5489d013d33792f670, type: 2}
+  - {fileID: 11400000, guid: d390646f80e7bfd43a24ebb09a68b88d, type: 2}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
+  m_Name: Billard
+  m_EditorClassIdentifier: 
+  AcivityName: Billard
+  Description: Billard
+  associatedThemes:
+  - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
+  - {fileID: 11400000, guid: db4db0d44d4c7bd4e8031389ced93056, type: 2}
+  - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
+  - {fileID: 11400000, guid: 5b94217f9b3ecb04dab6b089697056cd, type: 2}
+  - {fileID: 11400000, guid: 9f9ff2a35592e68479f1a28eb509cb83, type: 2}
+  - {fileID: 11400000, guid: 2ea297a3c0a12a843ad856c06934a4af, type: 2}
+  - {fileID: 11400000, guid: 41b74f3f0c0a5e5489d013d33792f670, type: 2}
