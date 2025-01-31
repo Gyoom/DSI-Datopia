@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1325956304979593342}
   - component: {fileID: 4783481426359300327}
   - component: {fileID: 2278083723171615114}
-  m_Layer: 0
+  - component: {fileID: 6812927294195646346}
+  m_Layer: 3
   m_Name: OBS_Unbreakable_001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.947935, y: 10.817079, z: 4.988678}
   m_Center: {x: 0.023004532, y: 4.9085393, z: 0.000038146973}
+--- !u!114 &6812927294195646346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495619234429762887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38add83051a357a40a9ef5965003bb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRecoil: 50
 --- !u!1 &7577570451292368650
 GameObject:
   m_ObjectHideFlags: 0

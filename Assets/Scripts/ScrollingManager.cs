@@ -48,7 +48,7 @@ public class ScrollingManager : MonoBehaviour
     private List<ThemePair> usedPair = new List<ThemePair>(); 
 
     [Header("Comeback")]
-    [SerializeField] private float comebackAmount = 20f;
+    [SerializeField] private float comebackAmount = 50f;
     [SerializeField] private float comebackDelay = 0.5f;
 
     [Header("Values Ingame")]
@@ -140,13 +140,16 @@ public class ScrollingManager : MonoBehaviour
         nextBlockDecount = Random.Range(min, max + 1);
     }
 
-    public IEnumerator ComeBack()
+    public IEnumerator ComeBack(float hitRecoil)
     {
+        if (hitRecoil == -1f)
+            hitRecoil = comebackAmount;
+
         isScrolling = false;
-        moveCount -= comebackAmount;
+        moveCount -= hitRecoil;
         foreach (var block in blocks)
         {
-            block.transform.DOMoveZ(block.transform.position.z + comebackAmount, comebackDelay);
+            block.transform.DOMoveZ(block.transform.position.z + hitRecoil, comebackDelay);
         }
         yield return new WaitForSeconds(comebackDelay);
         isScrolling = true;
