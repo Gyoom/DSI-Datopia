@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
+  m_Name: Festival
+  m_EditorClassIdentifier: 
+  AcivityName: Festival
+  Description: Festival
+  associatedThemes:
+  - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
+  - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
+  - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
+  - {fileID: 11400000, guid: 1841937a933636949872a09d77a6e57a, type: 2}
+  - {fileID: 11400000, guid: 83689980acb33d146826edd4c3ed6388, type: 2}
+  - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
+  - {fileID: 11400000, guid: 4b40c2d7f53282640b754581c99b4744, type: 2}
+  - {fileID: 11400000, guid: d390646f80e7bfd43a24ebb09a68b88d, type: 2}
+  - {fileID: 11400000, guid: 16b9852c1f87d9c49bef1cdf3a56f18a, type: 2}

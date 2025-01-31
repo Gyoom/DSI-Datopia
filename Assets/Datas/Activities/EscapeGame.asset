@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
+  m_Name: EscapeGame
+  m_EditorClassIdentifier: 
+  AcivityName: EscapeGame
+  Description: EscapeGame
+  associatedThemes:
+  - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
+  - {fileID: 11400000, guid: 882ba8590fed8ef4eb4725d43e0229cc, type: 2}
+  - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
+  - {fileID: 11400000, guid: 5b94217f9b3ecb04dab6b089697056cd, type: 2}
+  - {fileID: 11400000, guid: d3a4a648d454a784095205cd9109fbc7, type: 2}
+  - {fileID: 11400000, guid: 4b40c2d7f53282640b754581c99b4744, type: 2}
+  - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
+  - {fileID: 11400000, guid: 563d66756f2cba145a307b3a73da778f, type: 2}
+  - {fileID: 11400000, guid: 9a55679ca48fff04a97400a8479eea15, type: 2}
