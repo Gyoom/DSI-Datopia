@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 {
                     case "SwipableObstacle":
                         find = true;
-                        Debug.Log("SwipO");
+    
                         Vector2 SwipeDir = GetSwipDir();
                         if (SwipeDir.x > 0f)
                             hit.transform.parent.GetComponent<SwipableObstacle>().WaysMove(true);
