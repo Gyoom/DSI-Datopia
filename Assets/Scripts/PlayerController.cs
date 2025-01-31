@@ -87,12 +87,13 @@ public class PlayerController : MonoBehaviour
                 {
                     case "SwipableObstacle":
                         find = true;
+    
                         Vector2 SwipeDir = GetSwipDir();
                         if (SwipeDir.x > 0f)
-                            hit.transform.gameObject.GetComponent<SwipableObstacle>().WaysMove(true);
+                            hit.transform.parent.GetComponent<SwipableObstacle>().WaysMove(true);
 
                         if (SwipeDir.x < 0f)
-                            hit.transform.gameObject.GetComponent<SwipableObstacle>().WaysMove(false);
+                            hit.transform.parent.GetComponent<SwipableObstacle>().WaysMove(false);
 
                         break;
                     default:
@@ -183,9 +184,12 @@ public class PlayerController : MonoBehaviour
         if (inMove)
             yield break;
 
+        inMove = true;
+
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
+        inMove = false;
     }
 
     private void ClickInputs() {
@@ -206,14 +210,6 @@ public class PlayerController : MonoBehaviour
             }
         }         
     }
-
-    /*void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(GizmosPos, 1);
-    }*/
-
 
     IEnumerator CanMoveAgain() { 
         yield return new WaitForSeconds(sideMoveDelay);
