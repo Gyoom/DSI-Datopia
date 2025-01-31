@@ -95,7 +95,8 @@ GameObject:
   - component: {fileID: 4081388545656132001}
   - component: {fileID: 2046550658406954021}
   - component: {fileID: 309604699010797878}
-  m_Layer: 0
+  - component: {fileID: 1411078052431594438}
+  m_Layer: 3
   m_Name: OBS_Jumpable_001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -166,3 +167,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.947935, y: 2.7988741, z: 4.988678}
   m_Center: {x: 0.023004534, y: 0.8994366, z: 0.000038146973}
+--- !u!114 &1411078052431594438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099758488397270276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38add83051a357a40a9ef5965003bb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRecoil: 50

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3818686990416912226}
   - component: {fileID: 4915783918737749590}
   - component: {fileID: 1883001364385615206}
-  m_Layer: 0
+  - component: {fileID: 8645346918825873430}
+  m_Layer: 3
   m_Name: OBS_Swipable_001
-  m_TagString: Obstacle
+  m_TagString: SwipableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.947935, y: 10.817079, z: 4.988678}
   m_Center: {x: 0.023004532, y: 4.9085393, z: 0.000038146973}
+--- !u!114 &8645346918825873430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766584179524521669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697450fcce28782478ed6d54d157394b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRecoil: 10
+  currentWay: 2
+  sideMoveDelay: 0.5
+  sideMoveOffset: 7
 --- !u!1 &7339798231009978754
 GameObject:
   m_ObjectHideFlags: 0
