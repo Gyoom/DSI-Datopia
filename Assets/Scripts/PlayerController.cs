@@ -224,11 +224,13 @@ public class PlayerController : MonoBehaviour
             case Way.Left:
                 float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
                 transform.DOMoveX(xDestLeft, junctionMoveDelay);
+                StartCoroutine(EndJunctionChoice());
+
                 ScrollingManager.instance.xValue -= offSet;
                 xCenterValue -= offSet;
                 ScrollingManager.instance.junctionPending = false;
                 currentSide = Way.Mid;
-                UIManager.Instance.EmptyJonctionText();
+                UIManager.Instance.EmptyJonctionText(-1);
                 break;
 
             case Way.Mid:
@@ -238,16 +240,23 @@ public class PlayerController : MonoBehaviour
             case Way.Right:
                 float xDestRight = transform.position.x + offSet + (xCenterValue - transform.position.x);
                 transform.DOMoveX(xDestRight, junctionMoveDelay);
+                StartCoroutine(EndJunctionChoice());
+
                 ScrollingManager.instance.xValue += offSet;
                 xCenterValue += offSet;
                 ScrollingManager.instance.junctionPending = false;
                 currentSide = Way.Mid;
-                UIManager.Instance.EmptyJonctionText();
+                UIManager.Instance.EmptyJonctionText(1);
                 break;
 
             default:
                 break;
         }
+    }
+
+    private IEnumerator EndJunctionChoice() { 
+        yield return new WaitForSeconds(junctionMoveDelay);
+        UIManager.Instance.UpdateJunctionText();
     }
 
     private void OnCollisionEnter(Collision collision)
