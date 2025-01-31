@@ -29,6 +29,11 @@ public class UIManager : MonoBehaviour
     float frames;
     float timeLeft;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = Mathf.FloorToInt((float)Screen.currentResolution.refreshRateRatio.value);
+    }
+
 
     private void Start()
     {

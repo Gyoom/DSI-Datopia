@@ -184,9 +184,12 @@ public class PlayerController : MonoBehaviour
         if (inMove)
             yield break;
 
+        inMove = true;
+
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
+        inMove = false;
     }
 
     private void ClickInputs() {
