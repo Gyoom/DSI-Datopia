@@ -66,8 +66,8 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _ClampMax: 0.1
     - _ClampMin: -0.6
-    - _FoamAmount: 53.37
-    - _FoamCutOff: 17.1
+    - _FoamAmount: 62.9
+    - _FoamCutOff: 17.74
     - _FoamDensity: 15
     - _Foam_ScrollSpeed: 0.2
     - _Foamdisorder: 1
