@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 1
   first: {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
-  second: {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
+  second: {fileID: 11400000, guid: 69767f3f80b8ba84e99c4bf3f19991bc, type: 2}
