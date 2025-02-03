@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Soir\xE9e"
   m_EditorClassIdentifier: 
   nom: At evening
+  Name: At evening
+  AcivityName: 
   Description: Want to meet during evening?

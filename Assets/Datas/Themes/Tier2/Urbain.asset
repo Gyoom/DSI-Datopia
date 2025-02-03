@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Urbain
   m_EditorClassIdentifier: 
   nom: Urban
+  Name: Urban
+  AcivityName: 
   Description: In the city?

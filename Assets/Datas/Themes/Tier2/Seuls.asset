@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Seuls
   m_EditorClassIdentifier: 
   nom: Private
+  Name: Private
+  AcivityName: 
   Description: Just the two of us?

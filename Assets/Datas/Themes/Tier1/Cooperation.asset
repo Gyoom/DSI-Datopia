@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Cooperation
   m_EditorClassIdentifier: 
   nom: Cooperative
+  Name: Cooperative
+  AcivityName: 
   Description: Feeling cooperative?

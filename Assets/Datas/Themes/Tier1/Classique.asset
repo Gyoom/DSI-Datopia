@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Classique
   m_EditorClassIdentifier: 
   nom: Classic
+  Name: Classic
+  AcivityName: 
   Description: Classic is best?

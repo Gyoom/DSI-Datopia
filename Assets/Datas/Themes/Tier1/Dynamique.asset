@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Dynamique
   m_EditorClassIdentifier: 
   nom: Dynamic
+  Name: Dynamic
+  AcivityName: 
   Description: Something dynamic?

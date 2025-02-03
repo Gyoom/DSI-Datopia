@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Sportif
   m_EditorClassIdentifier: 
   nom: Sporty
+  Name: Sporty
+  AcivityName: 
   Description: Want to feed our muscles?

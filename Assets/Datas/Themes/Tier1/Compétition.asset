@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Comp\xE9tition"
   m_EditorClassIdentifier: 
   nom: Competitive
+  Name: Competitive
+  AcivityName: 
   Description: Feeling competitive?
