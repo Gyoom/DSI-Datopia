@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Activit\xE9"
   m_EditorClassIdentifier: 
   nom: Active
+  Name: Active
+  AcivityName: 
   Description: Focus on what we're doing?

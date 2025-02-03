@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Pas de Repas
   m_EditorClassIdentifier: 
   nom: No meal
+  Name: No meal
+  AcivityName: 
   Description: No meal during a date?

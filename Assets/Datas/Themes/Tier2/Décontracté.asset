@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "D\xE9contract\xE9"
   m_EditorClassIdentifier: 
   nom: Relaxed
+  Name: Relaxed
+  AcivityName: 
   Description: Want to be relaxed?

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Chic
   m_EditorClassIdentifier: 
   nom: Classy
+  Name: Classy
+  AcivityName: 
   Description: Want to be classy?

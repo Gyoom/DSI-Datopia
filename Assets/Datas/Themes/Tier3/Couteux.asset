@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Couteux
   m_EditorClassIdentifier: 
   nom: Pricey
+  Name: Pricey
+  AcivityName: 
   Description: No cost is too great for love?
