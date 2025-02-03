@@ -2275,9 +2275,73 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4380896973546571616, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: m_Center.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380896973546571616, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: m_Center.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5230927136778111933, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: trails
+      value: 
+      objectReference: {fileID: 4376713385971751276}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: splashPos
+      value: 
+      objectReference: {fileID: 4376713385971751277}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[1].time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[2].time
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[3].time
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[2].value
+      value: 0.6850079
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[3].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[1].inSlope
+      value: 0.8880682
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[2].inSlope
+      value: -1.5519521
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[1].outSlope
+      value: 0.8880682
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[2].inWeight
+      value: 0.13820215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[2].outSlope
+      value: -1.5519521
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889120926371001886, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[1].outWeight
+      value: 0.12921351
       objectReference: {fileID: 0}
     - target: {fileID: 8960328212668179880, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2324,6 +2388,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+--- !u!4 &4376713385971751276 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3409358767473562317, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+  m_PrefabInstance: {fileID: 4376713385971751275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4376713385971751277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5113117239996784365, guid: 977c10233e043c24f81e615babacb2fa, type: 3}
+  m_PrefabInstance: {fileID: 4376713385971751275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8448873698470824554
 PrefabInstance:
   m_ObjectHideFlags: 0
