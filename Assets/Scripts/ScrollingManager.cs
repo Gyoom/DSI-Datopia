@@ -40,13 +40,6 @@ public class ScrollingManager : MonoBehaviour
     [SerializeField]
     private Vector2Int junctionBlocksCountRange = new Vector2Int(1, 3);
 
-    [Header("Themes")]
-    [SerializeField] private List<ThemeTier> ThemesTiers = new List<ThemeTier>();
-    [SerializeField] [Range(1, 4)] private int nbrUseByTier = 1;
-    private int currentTierIndex = 0;
-    private int currentTierUseCount = 0;
-    private List<ThemePair> usedPair = new List<ThemePair>(); 
-
     [Header("Comeback")]
     [SerializeField] private float comebackAmount = 50f;
     [SerializeField] private float comebackDelay = 0.5f;
@@ -59,10 +52,15 @@ public class ScrollingManager : MonoBehaviour
     [HideInInspector] public bool junctionPending;
     private int blockCount = 0;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         SetBlockDecount(true);
-        instance = this;
+        UIManager.Instance.UpdateJunctionText();
     }
 
     void Update()
@@ -111,8 +109,6 @@ public class ScrollingManager : MonoBehaviour
             gm = junction;
             SetBlockDecount(false);
             junctionPending = true;
-            ThemePair tp = GetNextThemePair();
-            UIManager.Instance.DisplayJonctionText(tp);
         }
         else if (junctionPending) { 
             gm = postJunction;
@@ -153,32 +149,6 @@ public class ScrollingManager : MonoBehaviour
         }
         yield return new WaitForSeconds(comebackDelay);
         isScrolling = true;
-
-    }
-
-    private ThemePair GetNextThemePair() {
-        ThemeTier currentTier = ThemesTiers[currentTierIndex];
-        List<ThemePair> tempList = new List<ThemePair>();
-
-        foreach (var item in currentTier.choiceList)
-        {
-            if (!usedPair.Contains(item))
-                tempList.Add(item);
-        }
-
-        if (tempList.Count == 0)
-            return null;
-        else { 
-            ThemePair currentPair = tempList[Random.Range(0, tempList.Count)];
-            usedPair.Add(currentPair);
-            currentTierUseCount++;
-            if (currentTierUseCount == nbrUseByTier) { 
-                currentTierUseCount = 0;
-                currentTierIndex++;
-            }
-
-            return currentPair;
-        } 
 
     }
 }
