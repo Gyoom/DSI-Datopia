@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Domicile
   m_EditorClassIdentifier: 
   nom: At home
+  Name: At home
+  AcivityName: 
   Description: At one of our places?

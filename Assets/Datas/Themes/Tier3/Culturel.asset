@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Culturel
   m_EditorClassIdentifier: 
   nom: Cultural
+  Name: Cultural
+  AcivityName: 
   Description: Want to feed our brains?

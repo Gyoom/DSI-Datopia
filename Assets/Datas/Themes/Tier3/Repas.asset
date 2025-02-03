@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Repas
   m_EditorClassIdentifier: 
   nom: Meal
+  Name: Meal
+  AcivityName: 
   Description: Feeling hungry?

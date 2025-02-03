@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Rural
   m_EditorClassIdentifier: 
   nom: Rural
+  Name: Rural
+  AcivityName: 
   Description: In the wild?

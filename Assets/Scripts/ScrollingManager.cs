@@ -21,8 +21,7 @@ public class ScrollingManager : MonoBehaviour
     private GameObject postJunction;
 
     [Header("Scrolling")]
-    [SerializeField]
-    private bool isScrolling = true;
+    public bool isScrolling = true;
     [SerializeField]
     private float backgroundSpeed = 0.1f;
     [SerializeField]

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Economique
   m_EditorClassIdentifier: 
   nom: Affordable
+  Name: Affordable
+  AcivityName: 
   Description: Should we stay reasonable?

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Journ\xE9e"
   m_EditorClassIdentifier: 
   nom: During the day
+  Name: During the day
+  AcivityName: 
   Description: Want to meet during the day?

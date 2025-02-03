@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Amusant
   m_EditorClassIdentifier: 
   nom: Fun
+  Name: Fun
+  AcivityName: 
   Description: Something fun?
