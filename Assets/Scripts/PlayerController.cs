@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,10 +28,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform splashPos;
 
     [Header("Trail")]
+    [SerializeField] private bool trailActive;
     [SerializeField] private Transform trails;
-    [SerializeField] private float trailDuration = 0.8f;
-    [SerializeField] private float trailSize = 1f;
-    private List<float> trailsTimer = new List<float>();
+    [SerializeField] private GameObject trailPrefab;
+    [SerializeField] private float trailInstantiateDelay = 0.1f;
+    private float trailInstantiateTimer;
+    [SerializeField] private float trailDuration = 1f;
+
 
     RaycastHit[] fingerHits;
     private bool fingerActive;
@@ -44,10 +47,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         obstacleLayer = LayerMask.GetMask("Obstacles");
-
-        for (int i = 0; i < trails.childCount; i++) { 
-            trailsTimer.Add(i / ((float) trails.childCount) * trailDuration);
-        }
     }
 
     void Update()
@@ -88,32 +87,43 @@ public class PlayerController : MonoBehaviour
 
         // Trail --------------------------------------------------------------------------------------
 
-        for (int i = 0; i < trails.childCount; i++)
+        // new trail
+        if (trailActive)
         {
-            trailsTimer[i] += Time.deltaTime;
+            trailInstantiateTimer += Time.deltaTime;
 
-            if (trailsTimer[i] < trailDuration)
+            if (trailInstantiateTimer >= trailInstantiateDelay)
             {
-                // pos
-                Vector3 newPos = trails.GetChild(i).transform.localPosition;
-                newPos.y = Mathf.Lerp(0, -trailSize, trailsTimer[i] / trailDuration);
-                trails.GetChild(i).transform.localPosition = newPos;
-                // scale
-                Vector3 newScale = trails.GetChild(i).transform.localScale;
-                float newScaleValue = Mathf.Lerp(1, 0.1f, trailsTimer[i] / trailDuration);
-                newScale.x = newScaleValue;
-                newScale.z = newScaleValue;
-                trails.GetChild(i).transform.localScale = newScale;
-
-            } else {
-                trailsTimer[i] = 0f;
-                trails.GetChild(i).transform.localPosition = Vector3.zero;
-                trails.GetChild(i).gameObject.SetActive(true);
-                continue;
+                StartCoroutine(TrailLife());
+                trailInstantiateTimer = 0;
             }
         }
+    }
 
-        
+    private IEnumerator TrailLife() {
+        GameObject trail = Instantiate(trailPrefab, trails.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        float time = 0;
+        float localDuration = trailDuration;
+        Vector3 newScale = trail.transform.localScale;
+
+        while (time < trailDuration)
+        {
+            if (!trail.gameObject)
+                break;
+
+            time += Time.deltaTime;
+
+            float newScaleValue = Mathf.Lerp(1f, 2f, time / trailDuration);
+            newScale.x = newScaleValue;
+            newScale.z = newScaleValue;
+
+            trail.transform.localScale = newScale;
+
+            yield return null;
+        }
+
+        if (trail.gameObject)
+            Destroy(trail);
     }
 
     private void SwipeInputs()
@@ -225,12 +235,13 @@ public class PlayerController : MonoBehaviour
             yield break;
 
         inMove = true;
+        trailActive = false;
 
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
         GameObject splash = Instantiate(splashPrefab, splashPos.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
-
+        trailActive = true;
         inMove = false;
         yield return new WaitForSeconds(splashPrefab.GetComponent<ParticleSystem>().main.duration);
         Destroy(splash);
