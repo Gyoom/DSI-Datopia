@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Conversation
   m_EditorClassIdentifier: 
   nom: Talkative
+  Name: Talkative
+  AcivityName: 
   Description: Make more room for talking?

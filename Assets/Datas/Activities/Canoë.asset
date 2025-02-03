@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: "Cano\xEB"
   m_EditorClassIdentifier: 
+  nom: 
+  Name: "Cano\xEB"
   AcivityName: "Cano\xEB"
   Description: "Cano\xEB"
   associatedThemes:
