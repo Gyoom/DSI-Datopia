@@ -906,12 +906,9 @@ MonoBehaviour:
   - {fileID: 5784507289143200794, guid: 926d50431e545f040986c00d8403b799, type: 3}
   - {fileID: 7668221833982685048, guid: 8e1e85f0a83a89d4da0f8ba9182ee5d6, type: 3}
   - {fileID: 7705513977809791150, guid: a24c02e145c2bec4685531fd5a0eca5e, type: 3}
-  - {fileID: 2140714631748704330, guid: 24cb6baacbeb01f48a5e58c8c975a48f, type: 3}
   - {fileID: 3475150546792073616, guid: 6f13f7bf411845d4aa9449e4675e53f2, type: 3}
   - {fileID: 8188580806053006566, guid: 4142e28e6acc6804893874b7575e5e20, type: 3}
-  - {fileID: 7892135122354774141, guid: 9267245449a687c488d4dbbed7cea7fc, type: 3}
   - {fileID: 4606480749803311774, guid: 44cda13df09dc5740bdf784eb2f94e57, type: 3}
-  - {fileID: 8199680682090702232, guid: 2a51d9be0166bfb4e8029f948f74e5b0, type: 3}
   junction: {fileID: 2070053393912757193, guid: 300b02c70d92475458a59c47d61e48ed, type: 3}
   postJunction: {fileID: 720523615337658086, guid: 257f60940ea5c244fb6b49dce75f859e, type: 3}
   isScrolling: 1
@@ -1758,7 +1755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1859650011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1881,10 +1878,10 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859650010}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1946306117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,7 +2124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

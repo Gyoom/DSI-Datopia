@@ -180,16 +180,36 @@ public class UIManager : MonoBehaviour
     private List<Activity> GetActivityPair() {
         List<Activity> MatchedActivities = new List<Activity>();
 
-        foreach (var item in Activities)
+        for (int i = previousChoices.Count; i > 0; i--) // nbr match required
         {
-            if (item.associatedThemes.Contains((Theme) previousChoices[0]) &&
-                item.associatedThemes.Contains((Theme) previousChoices[1]) &&
-                item.associatedThemes.Contains((Theme) previousChoices[2])
-            ) { 
-                MatchedActivities.Add(item);
+            foreach (var item in Activities) // check every activity
+            {
+                bool match = true;
+                for (int j = 0; j < i; j++) { // check if current activity have the required match count
+                    if (!item.associatedThemes.Contains((Theme) previousChoices[j])) 
+                        match = false;
+                }
+                
+                if (match)
+                    MatchedActivities.Add(item);
             }
+
+            if (MatchedActivities.Count >= 2) 
+                break;
+            else 
+                MatchedActivities.Clear();
         }
 
+        // Debug info
+        if (MatchedActivities.Count < 2)
+        {
+            string errorMsg = "";
+            foreach (var item in previousChoices)
+                errorMsg += item.Name + " ";
+            Debug.Log("Error : no corresponding activity found with [" + errorMsg + "]");
+        }
+
+        // Get Random activity in matched pool
         List<Activity> pair = new List<Activity>();
 
         if (MatchedActivities.Count >= 2)
