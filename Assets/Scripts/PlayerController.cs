@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq;
 using UnityEditor;
+using UnityEngine.Splines;
 
 public class PlayerController : MonoBehaviour
 {
@@ -276,14 +277,18 @@ public class PlayerController : MonoBehaviour
         inMove = false;
     }
 
-    public void JunctionMove() {
+    public void JunctionMove(JunctionPlayerDetect jpd) {
         
         float offSet = ScrollingManager.instance.xValueOffset;
 
         switch (currentSide) { 
             case Way.Left:
+                Debug.Log("Left");
                 float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
-                transform.DOMoveX(xDestLeft, junctionMoveDelay);
+                //transform.DOMoveX(xDestLeft, junctionMoveDelay);
+                GetComponent<SplineAnimate>().Container = jpd.SplineLeft;
+                GetComponent<SplineAnimate>().enabled = true;
+
                 StartCoroutine(EndJunctionChoice());
 
                 ScrollingManager.instance.xValue -= offSet;
