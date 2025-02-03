@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Calme
   m_EditorClassIdentifier: 
   nom: Chill
+  Name: Chill
+  AcivityName: 
   Description: Something chill?

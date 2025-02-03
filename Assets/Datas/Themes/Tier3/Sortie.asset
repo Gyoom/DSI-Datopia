@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Sortie
   m_EditorClassIdentifier: 
   nom: Outing
+  Name: Outing
+  AcivityName: 
   Description: Want to go someplace else?

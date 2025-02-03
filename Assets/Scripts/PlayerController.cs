@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,12 +21,24 @@ public class PlayerController : MonoBehaviour
     [Header("JunctionMove")]
     [SerializeField] private float junctionMoveDelay = 0.5f;
 
-    
-    
     [Header("JumpMove")]
     [SerializeField] private float jumpStrength = 8f;
     [SerializeField] private float jumpDelay = 0.5f;
     [SerializeField] private AnimationCurve jumpCurve;
+    [SerializeField] private GameObject splashPrefab;
+    [SerializeField] private Transform splashPos;
+
+    [Header("Trail")]
+    [SerializeField] private bool trailActive;
+    [SerializeField] private Transform trails;
+    [SerializeField] private GameObject trailPrefab;
+    [SerializeField] private float trailInstantiateDelay = 0.1f;
+    private float trailInstantiateTimer;
+    [SerializeField] private float trailDuration = 1f;
+
+    [Header("Trail")]
+    [SerializeField] private GameObject impactPrefab;
+    [SerializeField] private float impactScale;
 
 
     RaycastHit[] fingerHits;
@@ -42,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Inputs ---------------------------------------------------------------------------------------------
         if (Input.GetMouseButtonDown(0)) {
             fingerTimer = 0;
             MouseStartPos = Input.mousePosition;
@@ -74,6 +89,46 @@ public class PlayerController : MonoBehaviour
         if (fingerActive) {
             fingerTimer += Time.deltaTime;
         }
+
+        // Trail --------------------------------------------------------------------------------------
+
+        // new trail
+        if (trailActive)
+        {
+            trailInstantiateTimer += Time.deltaTime;
+
+            if (trailInstantiateTimer >= trailInstantiateDelay)
+            {
+                StartCoroutine(TrailLife());
+                trailInstantiateTimer = 0;
+            }
+        }
+    }
+
+    private IEnumerator TrailLife() {
+        GameObject trail = Instantiate(trailPrefab, trails.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        float time = 0;
+        float localDuration = trailDuration;
+        Vector3 newScale = trail.transform.localScale;
+
+        while (time < trailDuration)
+        {
+            if (!trail.gameObject)
+                break;
+
+            time += Time.deltaTime;
+
+            float newScaleValue = Mathf.Lerp(1f, 2f, time / trailDuration);
+            newScale.x = newScaleValue;
+            newScale.z = newScaleValue;
+
+            trail.transform.localScale = newScale;
+
+            yield return null;
+        }
+
+        if (trail.gameObject)
+            Destroy(trail);
     }
 
     private void SwipeInputs()
@@ -185,11 +240,16 @@ public class PlayerController : MonoBehaviour
             yield break;
 
         inMove = true;
+        trailActive = false;
 
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
+        GameObject splash = Instantiate(splashPrefab, splashPos.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        trailActive = true;
         inMove = false;
+        yield return new WaitForSeconds(splashPrefab.GetComponent<ParticleSystem>().main.duration);
+        Destroy(splash);
     }
 
     private void ClickInputs() {
@@ -262,9 +322,20 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
-
-                StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
+            StartCoroutine(ImpactVfx(collision.contacts.First().point));
+            StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
         }
+    }
+
+    private IEnumerator ImpactVfx(Vector3 pos) {
+        GameObject impact = Instantiate(impactPrefab, pos, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        for (int i = 0; i < impact.transform.childCount; i++)
+        {
+            impact.transform.GetChild(i).localScale = new Vector3(impactScale, impactScale, impactScale);
+        }
+
+        yield return new WaitForSeconds(impactPrefab.GetComponent<ParticleSystem>().main.duration);
+        Destroy(impact);
     }
 }
 

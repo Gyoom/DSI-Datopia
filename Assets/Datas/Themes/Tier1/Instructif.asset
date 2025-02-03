@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Instructif
   m_EditorClassIdentifier: 
   nom: Instructive
+  Name: Instructive
+  AcivityName: 
   Description: Something instructive?

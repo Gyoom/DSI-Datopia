@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Int\xE9rieur"
   m_EditorClassIdentifier: 
   nom: Inside
+  Name: Inside
+  AcivityName: 
   Description: Want to stay inside?

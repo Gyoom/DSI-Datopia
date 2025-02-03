@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Insolite
   m_EditorClassIdentifier: 
   nom: Unusual
+  Name: Unusual
+  AcivityName: 
   Description: Unusual is best?

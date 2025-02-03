@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Publique
   m_EditorClassIdentifier: 
   nom: Public
+  Name: Public
+  AcivityName: 
   Description: In public?

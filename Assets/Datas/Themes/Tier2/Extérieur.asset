@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: "Ext\xE9rieur"
   m_EditorClassIdentifier: 
   nom: Outside
+  Name: Outside
+  AcivityName: 
   Description: Want to go outside?
