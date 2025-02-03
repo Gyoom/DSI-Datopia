@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float trailInstantiateDelay = 0.1f;
     private float trailInstantiateTimer;
     [SerializeField] private float trailDuration = 1f;
+
+    [Header("Trail")]
+    [SerializeField] private GameObject impactPrefab;
+    [SerializeField] private float impactScale;
 
 
     RaycastHit[] fingerHits;
@@ -317,9 +322,20 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
-
-                StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
+            StartCoroutine(ImpactVfx(collision.contacts.First().point));
+            StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
         }
+    }
+
+    private IEnumerator ImpactVfx(Vector3 pos) {
+        GameObject impact = Instantiate(impactPrefab, pos, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        for (int i = 0; i < impact.transform.childCount; i++)
+        {
+            impact.transform.GetChild(i).localScale = new Vector3(impactScale, impactScale, impactScale);
+        }
+
+        yield return new WaitForSeconds(impactPrefab.GetComponent<ParticleSystem>().main.duration);
+        Destroy(impact);
     }
 }
 
