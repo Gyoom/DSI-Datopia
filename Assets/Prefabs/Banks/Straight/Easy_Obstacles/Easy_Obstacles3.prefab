@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402470605212270706}
   m_Layer: 0
-  m_Name: Baby_Obstacles3
+  m_Name: Easy_Obstacles3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1325956304979593342, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75
+      value: 61.99716
       objectReference: {fileID: 0}
     - target: {fileID: 1325956304979593342, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -499,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3818686990416912226, guid: 7b2962c415a3c8a4e821c559f6f3f645, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48
+      value: 34.99716
       objectReference: {fileID: 0}
     - target: {fileID: 3818686990416912226, guid: 7b2962c415a3c8a4e821c559f6f3f645, type: 3}
       propertyPath: m_LocalRotation.w
