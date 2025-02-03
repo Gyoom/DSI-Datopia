@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1552062948363480543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3409358767473562317}
+  m_Layer: 0
+  m_Name: TrailPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3409358767473562317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552062948363480543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.384, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7164015060580688255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4906422538634278386
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5113117239996784365}
+  - {fileID: 3409358767473562317}
   m_Father: {fileID: 8960328212668179880}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2847074907210920971
@@ -94,7 +127,7 @@ GameObject:
   - component: {fileID: 8960328212668179880}
   - component: {fileID: 7889120926371001886}
   - component: {fileID: 1280993628075128159}
-  - component: {fileID: 4895813426961183609}
+  - component: {fileID: 4380896973546571616}
   m_Layer: 6
   m_Name: Player_Proto
   m_TagString: Player
@@ -181,6 +214,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  splashPrefab: {fileID: 1493857800688400044, guid: 574ebe585e9012c4abbce5e230835fa2, type: 3}
+  splashPos: {fileID: 5113117239996784365}
+  trailActive: 1
+  trails: {fileID: 3409358767473562317}
+  trailPrefab: {fileID: 3912770797099785827, guid: c75a177c5ebadcf41926cacb8accfffc, type: 3}
+  trailInstantiateDelay: 0.15
+  trailDuration: 0.8
+  impactPrefab: {fileID: 8221360151507227501, guid: 48e81e1b7fada864f922968fc99e7dc1, type: 3}
+  impactScale: 8
 --- !u!54 &1280993628075128159
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -208,8 +250,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4895813426961183609
-BoxCollider:
+--- !u!135 &4380896973546571616
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -227,5 +269,36 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.9303002, y: 0.22308415, z: 0.95036125}
-  m_Center: {x: -0.024741888, y: 0.016120374, z: 2.1337986}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 1.61}
+--- !u!1 &7371378300440226770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5113117239996784365}
+  m_Layer: 0
+  m_Name: SplashPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5113117239996784365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371378300440226770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7164015060580688255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
