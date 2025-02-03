@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,13 +20,18 @@ public class PlayerController : MonoBehaviour
     [Header("JunctionMove")]
     [SerializeField] private float junctionMoveDelay = 0.5f;
 
-    
-    
     [Header("JumpMove")]
     [SerializeField] private float jumpStrength = 8f;
     [SerializeField] private float jumpDelay = 0.5f;
     [SerializeField] private AnimationCurve jumpCurve;
+    [SerializeField] private GameObject splashPrefab;
+    [SerializeField] private Transform splashPos;
 
+    [Header("Trail")]
+    [SerializeField] private Transform trails;
+    [SerializeField] private float trailDuration = 0.8f;
+    [SerializeField] private float trailSize = 1f;
+    private List<float> trailsTimer = new List<float>();
 
     RaycastHit[] fingerHits;
     private bool fingerActive;
@@ -38,10 +44,15 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         obstacleLayer = LayerMask.GetMask("Obstacles");
+
+        for (int i = 0; i < trails.childCount; i++) { 
+            trailsTimer.Add(i / ((float) trails.childCount) * trailDuration);
+        }
     }
 
     void Update()
     {
+        // Inputs ---------------------------------------------------------------------------------------------
         if (Input.GetMouseButtonDown(0)) {
             fingerTimer = 0;
             MouseStartPos = Input.mousePosition;
@@ -74,6 +85,35 @@ public class PlayerController : MonoBehaviour
         if (fingerActive) {
             fingerTimer += Time.deltaTime;
         }
+
+        // Trail --------------------------------------------------------------------------------------
+
+        for (int i = 0; i < trails.childCount; i++)
+        {
+            trailsTimer[i] += Time.deltaTime;
+
+            if (trailsTimer[i] < trailDuration)
+            {
+                // pos
+                Vector3 newPos = trails.GetChild(i).transform.localPosition;
+                newPos.y = Mathf.Lerp(0, -trailSize, trailsTimer[i] / trailDuration);
+                trails.GetChild(i).transform.localPosition = newPos;
+                // scale
+                Vector3 newScale = trails.GetChild(i).transform.localScale;
+                float newScaleValue = Mathf.Lerp(1, 0.1f, trailsTimer[i] / trailDuration);
+                newScale.x = newScaleValue;
+                newScale.z = newScaleValue;
+                trails.GetChild(i).transform.localScale = newScale;
+
+            } else {
+                trailsTimer[i] = 0f;
+                trails.GetChild(i).transform.localPosition = Vector3.zero;
+                trails.GetChild(i).gameObject.SetActive(true);
+                continue;
+            }
+        }
+
+        
     }
 
     private void SwipeInputs()
@@ -189,7 +229,10 @@ public class PlayerController : MonoBehaviour
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
+        GameObject splash = Instantiate(splashPrefab, splashPos.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
         inMove = false;
+        yield return new WaitForSeconds(splashPrefab.GetComponent<ParticleSystem>().main.duration);
+        Destroy(splash);
     }
 
     private void ClickInputs() {
