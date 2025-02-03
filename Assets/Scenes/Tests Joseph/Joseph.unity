@@ -1666,18 +1666,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1560385696612547060, guid: 786617f935cd20e4ba92c1fb8cd2418d, type: 3}
-      propertyPath: sfxSounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5ab2db578c1683342acd2f3f1368bfc9, type: 3}
-    - target: {fileID: 1560385696612547060, guid: 786617f935cd20e4ba92c1fb8cd2418d, type: 3}
-      propertyPath: sfxSounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cd909d5f5a7deb648849b00fda3d5205, type: 3}
-    - target: {fileID: 1560385696612547060, guid: 786617f935cd20e4ba92c1fb8cd2418d, type: 3}
-      propertyPath: sfxSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 479d259dda218be49a1f23d378cba5d5, type: 3}
     - target: {fileID: 2198749271026594978, guid: 786617f935cd20e4ba92c1fb8cd2418d, type: 3}
       propertyPath: m_Name
       value: AudioManager
