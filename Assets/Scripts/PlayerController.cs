@@ -230,6 +230,7 @@ public class PlayerController : MonoBehaviour
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
         yield return new WaitForSeconds(jumpDelay);
         GameObject splash = Instantiate(splashPrefab, splashPos.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+
         inMove = false;
         yield return new WaitForSeconds(splashPrefab.GetComponent<ParticleSystem>().main.duration);
         Destroy(splash);
