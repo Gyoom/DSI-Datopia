@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: RegarderLesEtoiles
   m_EditorClassIdentifier: 
-  nom: 
-  Name: RegarderLesEtoiles
-  AcivityName: RegarderLesEtoiles
-  Description: RegarderLesEtoiles
+  Name: LookAtTheStars
+  Description: LookAtTheStars
   associatedThemes:
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
   - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}

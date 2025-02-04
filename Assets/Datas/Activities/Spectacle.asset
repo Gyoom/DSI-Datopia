@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: Spectacle
   m_EditorClassIdentifier: 
-  nom: 
-  Name: Spectacle
-  AcivityName: Spectacle
-  Description: Spectacle
+  Name: Show
+  Description: Show
   associatedThemes:
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
   - {fileID: 11400000, guid: e7392721182ad06489a51308998279fb, type: 2}
