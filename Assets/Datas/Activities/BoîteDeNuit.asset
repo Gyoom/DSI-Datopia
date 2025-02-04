@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: "Bo\xEEteDeNuit"
   m_EditorClassIdentifier: 
-  nom: 
-  Name: "Bo\xEEteDeNuit"
-  AcivityName: "Bo\xEEteDeNuit"
-  Description: "Bo\xEEteDeNuit"
+  Name: NightClub
+  Description: NightClub
   associatedThemes:
   - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
