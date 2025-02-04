@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Piscine
   m_EditorClassIdentifier: 
   Name: SwimmingPool
-  Description: SwimmingPool
+  Description: Swimming pool
   associatedThemes:
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}

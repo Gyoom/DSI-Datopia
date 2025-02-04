@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FaireLAmour
   m_EditorClassIdentifier: 
   Name: HaveSex
-  Description: HaveSex
+  Description: Make love
   associatedThemes:
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
   - {fileID: 11400000, guid: 882ba8590fed8ef4eb4725d43e0229cc, type: 2}

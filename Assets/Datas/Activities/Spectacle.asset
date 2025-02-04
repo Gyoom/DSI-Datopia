@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spectacle
   m_EditorClassIdentifier: 
   Name: Show
-  Description: Show
+  Description: See a show
   associatedThemes:
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
   - {fileID: 11400000, guid: e7392721182ad06489a51308998279fb, type: 2}

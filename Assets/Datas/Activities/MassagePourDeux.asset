@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MassagePourDeux
   m_EditorClassIdentifier: 
   Name: MassageForTwo
-  Description: MassageForTwo
+  Description: Massage for two
   associatedThemes:
   - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}

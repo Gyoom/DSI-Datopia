@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "JeuDeSoci\xE9t\xE9"
   m_EditorClassIdentifier: 
   Name: BoardGames
-  Description: BoardGames
+  Description: Board games
   associatedThemes:
   - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}

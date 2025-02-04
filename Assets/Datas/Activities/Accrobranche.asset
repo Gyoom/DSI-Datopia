@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Accrobranche
   m_EditorClassIdentifier: 
   Name: AdventurePark
-  Description: AdventurePark
+  Description: Adventure park
   associatedThemes:
   - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
   - {fileID: 11400000, guid: 882ba8590fed8ef4eb4725d43e0229cc, type: 2}
