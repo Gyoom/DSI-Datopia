@@ -126,6 +126,8 @@ public class UIManager : MonoBehaviour
             currentLeft = tp.second;
             currentRight = tp.first;
         }
+        textLeft.transform.parent.gameObject.SetActive(true);
+        textRight.transform.parent.gameObject.SetActive(true);
     }
 
     private ThemePair GetNextThemePair()
@@ -175,6 +177,8 @@ public class UIManager : MonoBehaviour
             currentLeft = ActivityPair[1];
             currentRight = ActivityPair[0];
         }
+        textLeft.transform.parent.gameObject.SetActive(true);
+        textRight.transform.parent.gameObject.SetActive(true);
     }
 
     private List<Activity> GetActivityPair() {
@@ -241,8 +245,8 @@ public class UIManager : MonoBehaviour
         if (choice == 1)
             previousChoices.Add(currentRight);
 
-        textLeft.text = "";
-        textRight.text = "";
+        textLeft.transform.parent.gameObject.SetActive(false);
+        textRight.transform.parent.gameObject.SetActive(false);
     }
 
     private IEnumerator DisplayEnd() {
