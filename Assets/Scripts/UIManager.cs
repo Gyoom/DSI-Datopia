@@ -10,8 +10,10 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField] private GameStep gameStep = GameStep.Choices;
-
+  
     [Header("Choices")]
+    [SerializeField] private TextMeshProUGUI textLeft;
+    [SerializeField] private TextMeshProUGUI textRight;
     [SerializeField] private List<ThemesByTier> ThemesTiers = new List<ThemesByTier>();
     [SerializeField][Range(1, 4)] private int nbrUseByTier = 1;
     private int currentTierIndex = 0;
@@ -30,9 +32,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endText;
     [SerializeField] private Button replayButton;
 
-    [Header("Left-Right")]
-    [SerializeField] private TextMeshProUGUI textLeft;
-    [SerializeField] private TextMeshProUGUI textRight;
+    [Header("Progress")]
+    [SerializeField] private Scrollbar progressSlider;
+    [HideInInspector] public float distanceBeforeNextChoice;
+    private float lastStep = 0;
+    [HideInInspector] public float traveledDistance;
+
 
     [Header("FPS")]
     [SerializeField] bool FPSActive;
@@ -291,6 +296,11 @@ public class UIManager : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void Travel(float distance) {
+        traveledDistance += distance;
+        progressSlider.value = traveledDistance / distanceBeforeNextChoice;
     }
 }
 
