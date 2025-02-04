@@ -75,7 +75,7 @@ Material:
     - _Patern3ScrollSpeed: 0.2
     - _PatternDisorder: 3
     - _Pattern_ScrollSpeed: 0.5
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _SpeedFoam: -0.3
     - _scaleFoam: 7.5
