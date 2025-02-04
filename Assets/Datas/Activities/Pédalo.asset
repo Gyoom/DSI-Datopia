@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: "P\xE9dalo"
   m_EditorClassIdentifier: 
-  nom: 
-  Name: "P\xE9dalo"
-  AcivityName: "P\xE9dalo"
-  Description: "P\xE9dalo"
+  Name: Pedalo
+  Description: Pedalo
   associatedThemes:
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}
   - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
