@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Linq;
 using UnityEditor;
 using UnityEngine.Splines;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
@@ -286,10 +287,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Left");
                 float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
                 //transform.DOMoveX(xDestLeft, junctionMoveDelay);
-                GetComponent<SplineAnimate>().Container = jpd.SplineLeft;
+                /*GetComponent<SplineAnimate>().Container = jpd.SplineLeft;
+                GetComponent<SplineAnimate>().Duration = junctionMoveDelay;
                 GetComponent<SplineAnimate>().enabled = true;
+                GetComponent <SplineAnimate>().Play();*/
 
-                StartCoroutine(EndJunctionChoice());
+                StartCoroutine(EndJunctionChoice(jpd.SplineLeft));
 
                 ScrollingManager.instance.xValue -= offSet;
                 xCenterValue -= offSet;
@@ -305,7 +308,7 @@ public class PlayerController : MonoBehaviour
             case Way.Right:
                 float xDestRight = transform.position.x + offSet + (xCenterValue - transform.position.x);
                 transform.DOMoveX(xDestRight, junctionMoveDelay);
-                StartCoroutine(EndJunctionChoice());
+                StartCoroutine(EndJunctionChoice(jpd.SplineRight));
 
                 ScrollingManager.instance.xValue += offSet;
                 xCenterValue += offSet;
@@ -319,8 +322,58 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator EndJunctionChoice() { 
-        yield return new WaitForSeconds(junctionMoveDelay);
+    private IEnumerator EndJunctionChoice(SplineContainer spline) {
+        // Fade backaground
+        float time = 0;
+
+        Vector3 previousPlayerPos = transform.position;
+        Vector3 newPlayerPos = transform.position;
+        Vector3 playerDir = transform.forward;
+        Quaternion playerRot = Quaternion.identity;
+
+        float progressValue = 0f;
+        float Duration = junctionMoveDelay;
+
+
+        var forward = Vector3.forward;
+        var up = Vector3.up;
+
+
+        while (time < Duration)
+        {
+            
+            progressValue = time / Duration;
+            Debug.Log(progressValue);
+            // Pos
+            newPlayerPos = spline.EvaluatePosition(progressValue);
+            transform.position = newPlayerPos;
+
+
+            // Dir
+            /* playerDir = newPlayerPos - previousPlayerPos;
+             playerDir.Normalize();*/
+            playerDir = spline.EvaluateTangent(progressValue);
+            if (Vector3.Magnitude(forward) <= Mathf.Epsilon)
+            {
+                if (progressValue < 1f)
+                    forward = spline.EvaluateTangent(Mathf.Min(1f, progressValue + 0.01f));
+                else
+                    forward = spline.EvaluateTangent(progressValue - 0.01f);
+            }
+            forward.Normalize();
+
+
+            // Rot
+            playerRot = Quaternion.LookRotation(playerDir, up);
+            transform.rotation = playerRot;
+
+            previousPlayerPos = newPlayerPos;
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        
         UIManager.Instance.UpdateJunctionText();
     }
 

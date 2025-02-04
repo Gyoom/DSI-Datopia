@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (player)
         {

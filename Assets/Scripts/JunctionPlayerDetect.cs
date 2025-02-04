@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
-using UnityEngine.U2D;
 
 public class JunctionPlayerDetect : MonoBehaviour
 {
