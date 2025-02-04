@@ -47,7 +47,6 @@ public class ScrollingManager : MonoBehaviour
 
     private float moveCount = 0f;
     [HideInInspector] public bool junctionPending;
-    private int blockCount = 0;
     [HideInInspector] public int blocksCountBeforeJunction = 0;
 
     private void Awake()

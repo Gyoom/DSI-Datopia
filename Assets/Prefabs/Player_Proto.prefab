@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 7889120926371001886}
   - component: {fileID: 1280993628075128159}
   - component: {fileID: 4380896973546571616}
+  - component: {fileID: 8015439433016322835}
   m_Layer: 6
   m_Name: Player_Proto
   m_TagString: Player
@@ -248,15 +249,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23ac5a8b8de6ee47b87c484e7048021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doubleBlockPrefab: {fileID: 720523615337658086, guid: 257f60940ea5c244fb6b49dce75f859e, type: 3}
   fingerDelay: 0.1
   currentSide: 1
   sideMoveOffset: 6
   sideMoveDelay: 0.2
   inMove: 0
   xCenterValue: 0
-  junctionMoveDelay: 0.5
+  junctionMoveDelay: 5
   jumpStrength: 8
-  jumpDelay: 1
+  jumpDelay: 1.5
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -270,26 +272,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.2389937
     - serializedVersion: 3
-      time: 0.3011627
+      time: 0.2
       value: 0.85818076
-      inSlope: 1.1639163
-      outSlope: 1.1639163
+      inSlope: 0.8880682
+      outSlope: 0.8880682
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.100569
-      outWeight: 0.16526344
+      outWeight: 0.12921351
     - serializedVersion: 3
-      time: 0.56985945
-      value: 0.68278015
-      inSlope: -1.6115861
-      outSlope: -1.6115861
+      time: 0.6
+      value: 0.6850079
+      inSlope: -1.5519521
+      outSlope: -1.5519521
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.23694623
+      inWeight: 0.13820215
       outWeight: 0.1561437
     - serializedVersion: 3
-      time: 0.8046396
-      value: 0.0029193833
+      time: 0.8
+      value: 0
       inSlope: -3.4459476
       outSlope: -3.4459476
       tangentMode: 0
@@ -355,7 +357,30 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 1.61}
+  m_Center: {x: 0, y: 1.4, z: 2}
+--- !u!114 &8015439433016322835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230927136778111933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_LoopMode: 0
+  m_Method: 0
+  m_Duration: 1
+  m_MaxSpeed: 10
+  m_EasingMode: 0
+  m_AlignmentMode: 1
+  m_ObjectForwardAxis: 2
+  m_ObjectUpAxis: 1
+  m_StartOffset: 0
 --- !u!1 &7371378300440226770
 GameObject:
   m_ObjectHideFlags: 0

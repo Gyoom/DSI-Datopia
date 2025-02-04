@@ -35,7 +35,6 @@ public class UIManager : MonoBehaviour
     [Header("Progress")]
     [SerializeField] private Scrollbar progressSlider;
     [HideInInspector] public float distanceBeforeNextChoice;
-    private float lastStep = 0;
     [HideInInspector] public float traveledDistance;
 
 

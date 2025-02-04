@@ -1,13 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
-using UnityEditor;
 using UnityEngine.Splines;
-using static UnityEngine.GraphicsBuffer;
-using static Unity.Collections.AllocatorManager;
-using Unity.VisualScripting;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -266,7 +262,7 @@ public class PlayerController : MonoBehaviour
                 {
 
                     case "BreakableObstacle":
-                        Destroy(hit.transform.parent.gameObject);
+                        StartCoroutine(hit.transform.GetComponent<SinkObstacle>().ClickObstacle());
                         break;
 
                     default:
@@ -281,7 +277,7 @@ public class PlayerController : MonoBehaviour
         inMove = false;
     }
 
-    public void JunctionMove(JunctionPlayerDetect jpd) {
+    public void JunctionChoice(JunctionPlayerDetect jpd) {
         
         float offSet = ScrollingManager.instance.xValueOffset;
 
@@ -362,23 +358,24 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
         // UI Update
         UIManager.Instance.UpdateJunctionText();
-        int count = 0;
+        
+        int doubleBlockCount = 0;
         foreach (var block in ScrollingManager.instance.blocks) {
-            if (block.GetPrefabDefinition() == doubleBlockPrefab.GetPrefabDefinition()) {
-                Debug.Log("SSSSSSSS");
+            if (block.name == doubleBlockPrefab.name + "(Clone)") { 
+                doubleBlockCount++;
             }
         }
 
         UIManager.Instance.distanceBeforeNextChoice = ( 
-            ScrollingManager.instance.blocksCountBeforeJunction + 2
-        ) * ScrollingManager.instance.BlockLength;
+            ScrollingManager.instance.blocksCountBeforeJunction + doubleBlockCount
+        ) * ScrollingManager.instance.BlockLength + transform.position.z;
 
         UIManager.Instance.traveledDistance = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.ToString());
+        Debug.Log("Player collision : " + collision.gameObject.ToString());
 
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
             StartCoroutine(ImpactVfx(collision.contacts.First().point));

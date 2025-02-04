@@ -69,7 +69,6 @@ public class SwipableObstacle : Obstacle
 
         if (doMove)
         {
-            Debug.Log("doMove");
             transform.DOMoveX(newPos, sideMoveDelay);
             StartCoroutine(CanMoveAgain());
         }

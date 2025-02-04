@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4390693098606580956}
   - component: {fileID: 3465738250314118747}
   - component: {fileID: 7963020261858031461}
-  - component: {fileID: 9139663052795593908}
+  - component: {fileID: 7197824458506616865}
   m_Layer: 3
-  m_Name: OBS_Breakable_001
+  m_Name: OBS_Clickable_001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.2868986, y: 10.817079, z: 0.8433914}
   m_Center: {x: 0.027374426, y: 4.9085393, z: -0.831604}
---- !u!114 &9139663052795593908
+--- !u!114 &7197824458506616865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 7384733561016440854}
   - component: {fileID: 8359523735517640398}
   - component: {fileID: 196664092421930308}
+  - component: {fileID: 4192387532836524168}
   m_Layer: 0
   m_Name: BabyCroco
   m_TagString: BreakableObstacle
@@ -223,9 +224,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.912248, y: 0.3475119, z: 0}
   m_Center: {x: 0.009191896, y: -0.0035529023, z: -0.00000015841934}
+--- !u!114 &4192387532836524168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055184593401124907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6857c56120c965149a301d120e177991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayMove: 0.3
+  delayBerforeUp: 5
+  downAmount: 10
