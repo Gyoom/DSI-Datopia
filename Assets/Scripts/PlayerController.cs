@@ -326,7 +326,6 @@ public class PlayerController : MonoBehaviour
         // Fade backaground
         float time = 0;
 
-        Vector3 previousPlayerPos = transform.position;
         Vector3 newPlayerPos = transform.position;
         Vector3 playerDir = transform.forward;
         Quaternion playerRot = Quaternion.identity;
@@ -341,17 +340,13 @@ public class PlayerController : MonoBehaviour
 
         while (time < Duration)
         {
-            
             progressValue = time / Duration;
-            Debug.Log(progressValue);
+ 
             // Pos
-            newPlayerPos = spline.EvaluatePosition(progressValue);
+            newPlayerPos.x = spline.EvaluatePosition(progressValue).x;
             transform.position = newPlayerPos;
 
-
             // Dir
-            /* playerDir = newPlayerPos - previousPlayerPos;
-             playerDir.Normalize();*/
             playerDir = spline.EvaluateTangent(progressValue);
             if (Vector3.Magnitude(forward) <= Mathf.Epsilon)
             {
@@ -367,7 +362,6 @@ public class PlayerController : MonoBehaviour
             playerRot = Quaternion.LookRotation(playerDir, up);
             transform.rotation = playerRot;
 
-            previousPlayerPos = newPlayerPos;
             time += Time.deltaTime;
 
             yield return null;
@@ -379,6 +373,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.ToString());
+
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
             StartCoroutine(ImpactVfx(collision.contacts.First().point));
             StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
