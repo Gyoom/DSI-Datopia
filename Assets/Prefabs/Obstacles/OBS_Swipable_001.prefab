@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697450fcce28782478ed6d54d157394b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitRecoil: 30
-  currentWay: 2
+  hitRecoil: 10
+  currentWay: 1
   sideMoveDelay: 0.5
   sideMoveOffset: 7
 --- !u!1 &3546970714147696821

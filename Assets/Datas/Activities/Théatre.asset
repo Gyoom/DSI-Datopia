@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: "Th\xE9atre"
   m_EditorClassIdentifier: 
-  nom: 
-  Name: "Th\xE9atre"
-  AcivityName: "Th\xE9atre"
-  Description: "Th\xE9atre"
+  Name: Theatre
+  Description: Theatre play
   associatedThemes:
   - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}
   - {fileID: 11400000, guid: 6ccfa5241ed6498469a493d9e94e7313, type: 2}

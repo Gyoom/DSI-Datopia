@@ -67,7 +67,7 @@ Material:
     - _ClampMax: 0.1
     - _ClampMin: -0.6
     - _FoamAmount: 62.9
-    - _FoamCutOff: 24.67
+    - _FoamCutOff: 97
     - _FoamDensity: 15
     - _Foam_ScrollSpeed: 0.3
     - _Foamdisorder: 1
@@ -75,7 +75,7 @@ Material:
     - _Patern3ScrollSpeed: 0.2
     - _PatternDisorder: 3
     - _Pattern_ScrollSpeed: 0.5
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _SpeedFoam: -0.3
     - _scaleFoam: 7.5
