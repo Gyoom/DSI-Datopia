@@ -26,10 +26,8 @@ public class ScrollingManager : MonoBehaviour
     private float backgroundSpeed = 0.1f;
     [SerializeField]
     private Transform blocksParent; 
-    [SerializeField]
-    private List<GameObject> blocks = new List<GameObject>();
-    [SerializeField]
-    private float BlockLength = 100f;
+    public  List<GameObject> blocks = new List<GameObject>();
+    public float BlockLength = 100f;
     [SerializeField]
     private float blockOffset = 20f;
     [SerializeField]
@@ -50,6 +48,7 @@ public class ScrollingManager : MonoBehaviour
     private float moveCount = 0f;
     [HideInInspector] public bool junctionPending;
     private int blockCount = 0;
+    [HideInInspector] public int blocksCountBeforeJunction = 0;
 
     private void Awake()
     {
@@ -60,6 +59,8 @@ public class ScrollingManager : MonoBehaviour
     {
         SetBlockDecount(true);
         UIManager.Instance.UpdateJunctionText();
+        UIManager.Instance.distanceBeforeNextChoice = (blocks.Count + blocksCountBeforeJunction) * BlockLength;
+
     }
 
     void Update()
@@ -79,6 +80,7 @@ public class ScrollingManager : MonoBehaviour
                 blocksToDelete.Add(block);
             }
         }
+        UIManager.Instance.Travel(move);
 
         // delete
         foreach (var block in blocksToDelete)
@@ -133,6 +135,7 @@ public class ScrollingManager : MonoBehaviour
             max = junctionBlocksCountRange.y;
         }
         nextBlockDecount = Random.Range(min, max + 1);
+        blocksCountBeforeJunction = nextBlockDecount;
     }
 
     public IEnumerator ComeBack(float hitRecoil)
@@ -147,6 +150,8 @@ public class ScrollingManager : MonoBehaviour
             block.transform.DOMoveZ(block.transform.position.z + hitRecoil, comebackDelay);
         }
         yield return new WaitForSeconds(comebackDelay);
+
+        UIManager.Instance.Travel(-hitRecoil);
         isScrolling = true;
 
     }

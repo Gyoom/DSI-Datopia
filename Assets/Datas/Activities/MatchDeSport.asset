@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MatchDeSport
   m_EditorClassIdentifier: 
   Name: SportsMatch
-  Description: SportsMatch
+  Description: Watch sports
   associatedThemes:
   - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
   - {fileID: 11400000, guid: f6f1e30fd70f5ca4281e14918e073630, type: 2}
