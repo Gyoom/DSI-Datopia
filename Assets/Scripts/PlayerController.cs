@@ -6,9 +6,12 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine.Splines;
 using static UnityEngine.GraphicsBuffer;
+using static Unity.Collections.AllocatorManager;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject doubleBlockPrefab;
     [Header("Inputs")]
     [SerializeField] private float fingerDelay = 0.1f;
    
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private float trailInstantiateTimer;
     [SerializeField] private float trailDuration = 1f;
 
-    [Header("Trail")]
+    [Header("Impact")]
     [SerializeField] private GameObject impactPrefab;
     [SerializeField] private float impactScale;
 
@@ -313,7 +316,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator JunctionMove(SplineContainer spline) {
-        // Fade backaground
+        // Spline move
         float time = 0;
 
         Vector3 newPlayerPos = transform.position;
@@ -357,7 +360,20 @@ public class PlayerController : MonoBehaviour
 
         inMove = false;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+        // UI Update
         UIManager.Instance.UpdateJunctionText();
+        int count = 0;
+        foreach (var block in ScrollingManager.instance.blocks) {
+            if (block.GetPrefabDefinition() == doubleBlockPrefab.GetPrefabDefinition()) {
+                Debug.Log("SSSSSSSS");
+            }
+        }
+
+        UIManager.Instance.distanceBeforeNextChoice = ( 
+            ScrollingManager.instance.blocksCountBeforeJunction + 2
+        ) * ScrollingManager.instance.BlockLength;
+
+        UIManager.Instance.traveledDistance = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
