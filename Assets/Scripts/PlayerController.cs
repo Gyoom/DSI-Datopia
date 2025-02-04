@@ -284,15 +284,7 @@ public class PlayerController : MonoBehaviour
 
         switch (currentSide) { 
             case Way.Left:
-                Debug.Log("Left");
-                float xDestLeft = transform.position.x - offSet + (xCenterValue - transform.position.x);
-                //transform.DOMoveX(xDestLeft, junctionMoveDelay);
-                /*GetComponent<SplineAnimate>().Container = jpd.SplineLeft;
-                GetComponent<SplineAnimate>().Duration = junctionMoveDelay;
-                GetComponent<SplineAnimate>().enabled = true;
-                GetComponent <SplineAnimate>().Play();*/
-
-                StartCoroutine(EndJunctionChoice(jpd.SplineLeft));
+                StartCoroutine(JunctionMove(jpd.SplineLeft));
 
                 ScrollingManager.instance.xValue -= offSet;
                 xCenterValue -= offSet;
@@ -306,9 +298,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case Way.Right:
-                float xDestRight = transform.position.x + offSet + (xCenterValue - transform.position.x);
-                transform.DOMoveX(xDestRight, junctionMoveDelay);
-                StartCoroutine(EndJunctionChoice(jpd.SplineRight));
+                StartCoroutine(JunctionMove(jpd.SplineRight));
 
                 ScrollingManager.instance.xValue += offSet;
                 xCenterValue += offSet;
@@ -322,63 +312,58 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator EndJunctionChoice(SplineContainer spline) {
+    private IEnumerator JunctionMove(SplineContainer spline) {
         // Fade backaground
         float time = 0;
 
-        Vector3 previousPlayerPos = transform.position;
         Vector3 newPlayerPos = transform.position;
         Vector3 playerDir = transform.forward;
         Quaternion playerRot = Quaternion.identity;
 
-        float progressValue = 0f;
         float Duration = junctionMoveDelay;
-
+        float progressValue = 0f;
 
         var forward = Vector3.forward;
         var up = Vector3.up;
 
-
         while (time < Duration)
         {
-            
+            inMove = true;
             progressValue = time / Duration;
-            Debug.Log(progressValue);
+ 
             // Pos
-            newPlayerPos = spline.EvaluatePosition(progressValue);
+            newPlayerPos.x = spline.EvaluatePosition(progressValue).x;
             transform.position = newPlayerPos;
 
-
             // Dir
-            /* playerDir = newPlayerPos - previousPlayerPos;
-             playerDir.Normalize();*/
             playerDir = spline.EvaluateTangent(progressValue);
-            if (Vector3.Magnitude(forward) <= Mathf.Epsilon)
+            if (Vector3.Magnitude(playerDir) <= Mathf.Epsilon)
             {
                 if (progressValue < 1f)
-                    forward = spline.EvaluateTangent(Mathf.Min(1f, progressValue + 0.01f));
+                    playerDir = spline.EvaluateTangent(Mathf.Min(1f, progressValue + 0.01f));
                 else
-                    forward = spline.EvaluateTangent(progressValue - 0.01f);
+                    playerDir = spline.EvaluateTangent(progressValue - 0.01f);
             }
-            forward.Normalize();
-
+            playerDir.Normalize();
 
             // Rot
             playerRot = Quaternion.LookRotation(playerDir, up);
             transform.rotation = playerRot;
 
-            previousPlayerPos = newPlayerPos;
             time += Time.deltaTime;
 
             yield return null;
         }
 
-        
+        inMove = false;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
         UIManager.Instance.UpdateJunctionText();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.ToString());
+
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0) {
             StartCoroutine(ImpactVfx(collision.contacts.First().point));
             StartCoroutine(ScrollingManager.instance.ComeBack(collision.gameObject.GetComponent<Obstacle>().hitRecoil));
