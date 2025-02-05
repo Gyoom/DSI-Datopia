@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
             target.z += posOffset.z;
             target.y = transform.position.y;
             target.x += posOffset.x;
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, timeLerpPos);
+            transform.position = target;
 
         }
     }
