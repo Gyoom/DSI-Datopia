@@ -5,37 +5,31 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private Transform target;
     [SerializeField] private Vector3 posOffset = new Vector3(0, 29, -25);
+    [SerializeField] private float smoothTime = 0.1f;
 
-    [SerializeField] private float timeLerpPos = 0.1f;
-
-    private Vector3 currentVelocity;
+    private Vector3 currentVelocity = Vector3.zero;
 
     private void Start()
     {
-        if (player)
+        if (target)
         {
             // all directions camera follow
-            Vector3 target = player.transform.position;
-            target.z += posOffset.z;
-            target.y += posOffset.y;
-            target.x += posOffset.x;
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, timeLerpPos);
+            Vector3 newPos = target.position + posOffset;
+            transform.position = newPos;
 
         }
     }
 
     void LateUpdate()
     {
-        if (player)
+        if (target)
         {
             // all directions camera follow
-            Vector3 target = player.transform.position;
-            target.z += posOffset.z;
-            target.y = transform.position.y;
-            target.x += posOffset.x;
-            transform.position = target;
+            Vector3 newPos = target.position + posOffset;
+            newPos.y = transform.position.y;
+            transform.position = Vector3.SmoothDamp(transform.position, newPos, ref currentVelocity, smoothTime);
 
         }
     }
