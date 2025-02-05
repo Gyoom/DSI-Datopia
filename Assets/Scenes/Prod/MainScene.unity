@@ -1224,7 +1224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163144080539333260, guid: 8e1e85f0a83a89d4da0f8ba9182ee5d6, type: 3}
       propertyPath: delayBerforeUp
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7668221833982685048, guid: 8e1e85f0a83a89d4da0f8ba9182ee5d6, type: 3}
       propertyPath: m_Name
