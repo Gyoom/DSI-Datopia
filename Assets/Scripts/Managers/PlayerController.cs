@@ -7,6 +7,7 @@ using UnityEngine.Splines;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     [SerializeField] private GameObject doubleBlockPrefab;
     [Header("Inputs")]
     [SerializeField] private float fingerDelay = 0.1f;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Way currentSide = Way.Mid;
     [SerializeField] private float sideMoveOffset = 5f;
     [SerializeField] private float sideMoveDelay = 0.2f;
-    [SerializeField] private bool inMove;
+    public bool inMove;
     [SerializeField] private float xCenterValue = 0f;
     float newPos = 0f;
 
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 MouseEndPos;
 
     private LayerMask obstacleLayer;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

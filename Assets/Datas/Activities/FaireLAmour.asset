@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: FaireLAmour
   m_EditorClassIdentifier: 
-  Name: HaveSex
+  Name: Make love
   Description: Make love
   associatedThemes:
   - {fileID: 11400000, guid: fc565cde766381c47a48e956176a2ffa, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: "Caf\xE9"
   m_EditorClassIdentifier: 
-  Name: CoffeeShop
+  Name: Coffee shop
   Description: Coffee shop
   associatedThemes:
   - {fileID: 11400000, guid: 7701ed42b0223ad4e8b656057b7c998c, type: 2}

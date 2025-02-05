@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: Accrobranche
   m_EditorClassIdentifier: 
-  Name: AdventurePark
+  Name: Adventure park
   Description: Adventure park
   associatedThemes:
   - {fileID: 11400000, guid: 4c08ca7dee0d79e43a6956228a6ef4dc, type: 2}
