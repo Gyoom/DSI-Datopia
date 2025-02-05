@@ -392,7 +392,7 @@ MonoBehaviour:
   fadeDuration: 2
   blackScreenUIElement: {fileID: 5544128252999523009}
   endText: {fileID: 975128937876410451}
-  placesText: {fileID: 0}
+  placesText: {fileID: 3431055719034842167}
   replayButton: {fileID: 7498782233131461442}
   progressSlider: {fileID: 691642987159884730}
   distanceBeforeNextChoice: 0

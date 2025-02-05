@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleBlockPrefab: {fileID: 720523615337658086, guid: 257f60940ea5c244fb6b49dce75f859e, type: 3}
   fingerDelay: 0.1
+  fingerSwipDistMin: 20
   currentSide: 1
   sideMoveOffset: 6
   sideMoveDelay: 0.2
@@ -303,6 +304,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   splashPrefab: {fileID: 1493857800688400044, guid: 574ebe585e9012c4abbce5e230835fa2, type: 3}
   splashPos: {fileID: 5113117239996784365}
+  canJump: 1
   trailActive: 1
   trails: {fileID: 3409358767473562317}
   trailPrefab: {fileID: 3912770797099785827, guid: c75a177c5ebadcf41926cacb8accfffc, type: 3}
@@ -356,8 +358,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 1.4, z: 2}
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 1.4, z: 0.85}
 --- !u!114 &8015439433016322835
 MonoBehaviour:
   m_ObjectHideFlags: 0
