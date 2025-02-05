@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 2.0f;
     [SerializeField] private CanvasGroup blackScreenUIElement;
     [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private TextMeshProUGUI placesText;
     [SerializeField] private Button replayButton;
 
     [Header("Progress")]
@@ -257,6 +258,7 @@ public class UIManager : MonoBehaviour
         endText.gameObject.SetActive(true);
         endText.text = " You have chosen : " + previousChoices[3].Name; 
         replayButton.gameObject.SetActive(true);
+        placesText.gameObject.SetActive(true);
 
         // Fade backaground
         float time = 0;
@@ -283,6 +285,7 @@ public class UIManager : MonoBehaviour
             newAlpha = Mathf.Lerp(startValueAlphaScreen, 1, time / halfDuration);
             endText.GetComponent<CanvasGroup>().alpha = newAlpha;
             replayButton.GetComponent<CanvasGroup>().alpha = newAlpha;
+            placesText.GetComponent<CanvasGroup>().alpha = newAlpha;
 
             time += Time.deltaTime;
             yield return null;
