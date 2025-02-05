@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject doubleBlockPrefab;
     [Header("Inputs")]
     [SerializeField] private float fingerDelay = 0.1f;
-   
+    [SerializeField] private float fingerSwipDistMin = 20f;
+
     [Header("SideMode")]
     [SerializeField] private Way currentSide = Way.Mid;
     [SerializeField] private float sideMoveOffset = 5f;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationCurve jumpCurve;
     [SerializeField] private GameObject splashPrefab;
     [SerializeField] private Transform splashPos;
+    [HideInInspector] public bool canJump = true; 
 
     [Header("Trail")]
     [SerializeField] private bool trailActive;
@@ -67,7 +69,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             fingerTimer = 0;
             MouseStartPos = Input.mousePosition;
-            //Array.Clear(fingerHits, 0, fingerHits.Length);
 
             var v3 = Input.mousePosition;
             v3.z = 1f;
@@ -79,8 +80,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) {
             MouseEndPos = Input.mousePosition;
+            Vector3 dist = MouseEndPos - MouseStartPos;
             // Swipe
-            if (fingerTimer > fingerDelay)
+            if (dist.magnitude > fingerSwipDistMin && fingerTimer > fingerDelay)
             {
                 SwipeInputs();
             }
@@ -243,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpMove()
     {
-        if (inMove)
+        if (inMove || !canJump)
             yield break;
 
         inMove = true;
