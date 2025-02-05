@@ -243,5 +243,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayMove: 0.3
-  delayBerforeUp: 5
+  delayBerforeUp: 2
   downAmount: 10
