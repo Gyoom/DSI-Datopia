@@ -247,3 +247,4 @@ MonoBehaviour:
   downAmount: 2
   deadCroco: {fileID: 2100000, guid: c151e1c800026ce458971aec0cf6434b, type: 2}
   aliveCroco: {fileID: 2100000, guid: 32d73d573d90c654ea15e3361ea459af, type: 2}
+  deadCrocoSound: {fileID: 8300000, guid: 85163f6137eb58b40a54ac9b85e5181d, type: 3}

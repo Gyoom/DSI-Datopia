@@ -12,6 +12,7 @@ public class SinkObstacle : MonoBehaviour {
     [SerializeField] private Material deadCroco;
     [SerializeField] private Material aliveCroco;
     private MeshRenderer mr;
+    [SerializeField] private AudioClip deadCrocoSound;
 
     private BoxCollider Collider; 
 
@@ -25,6 +26,7 @@ public class SinkObstacle : MonoBehaviour {
         Collider.enabled = false;
         transform.parent.DOMoveY(transform.parent.position.y - downAmount, delayMove);
         mr.material = deadCroco;
+        AudioManager.Instance.sfxSource.PlayOneShot(deadCrocoSound);
         
         yield return new WaitForSeconds(delayMove + delayBerforeUp);
 
