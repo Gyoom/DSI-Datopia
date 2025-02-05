@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -37,7 +38,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Scrollbar progressSlider;
     [HideInInspector] public float distanceBeforeNextChoice;
     [HideInInspector] public float traveledDistance;
-
+    [SerializeField] private Transform goal;
+    [SerializeField] private Vector2 scaleRange = new Vector2(1.5f, 2.5f);
+    [SerializeField] private float scaleDuration = 1f;
 
     [Header("FPS")]
     [SerializeField] bool FPSActive;
@@ -61,6 +64,11 @@ public class UIManager : MonoBehaviour
     {
         Application.targetFrameRate = Mathf.FloorToInt((float)Screen.currentResolution.refreshRateRatio.value);
         Instance = this;
+    }
+
+    private void Start()
+    {
+        goal.DOScale(scaleRange.y, scaleDuration).From(scaleRange.x).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void Update()

@@ -157,10 +157,8 @@ public class ScrollingManager : MonoBehaviour
         {
             block.transform.DOMoveZ(block.transform.position.z + hitRecoil, comebackDelay);
         }
-        for (int i = 0; i < propsParent.childCount; i++)
-        {
-            propsParent.GetChild(i).DOMoveZ(propsParent.GetChild(i).position.z + hitRecoil, comebackDelay);
-        }
+        propsParent.DOMoveZ(propsParent.position.z + hitRecoil, comebackDelay);
+
         yield return new WaitForSeconds(comebackDelay);
 
         PlayerController.Instance.canJump = true;
