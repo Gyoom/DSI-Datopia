@@ -70,6 +70,7 @@ public class SwipableObstacle : Obstacle
         if (doMove)
         {
             transform.DOMoveX(newPos, sideMoveDelay);
+            AudioManager.Instance.PlaySFX("Décalage");
             StartCoroutine(CanMoveAgain());
         }
     }
