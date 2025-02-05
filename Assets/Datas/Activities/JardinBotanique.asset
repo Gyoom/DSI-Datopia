@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: JardinBotanique
   m_EditorClassIdentifier: 
-  Name: BotanicalGarden
+  Name: Botanical garden
   Description: Botanical garden
   associatedThemes:
   - {fileID: 11400000, guid: 6ccfa5241ed6498469a493d9e94e7313, type: 2}
