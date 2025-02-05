@@ -242,6 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6857c56120c965149a301d120e177991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayMove: 0.3
+  delayMove: 1
   delayBerforeUp: 2
-  downAmount: 10
+  downAmount: 2
+  deadCroco: {fileID: 2100000, guid: c151e1c800026ce458971aec0cf6434b, type: 2}
+  aliveCroco: {fileID: 2100000, guid: 32d73d573d90c654ea15e3361ea459af, type: 2}
+  deadCrocoSound: {fileID: 8300000, guid: 85163f6137eb58b40a54ac9b85e5181d, type: 3}
