@@ -307,6 +307,7 @@ public class PlayerController : MonoBehaviour
 
         switch (currentSide) { 
             case Way.Left:
+                AudioManager.Instance.PlaySFX("Embranchement");
                 inMove = true;
                 spline = jpd.SplineLeft;
                 junctionMoveTimer = 0f;
@@ -323,6 +324,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case Way.Right:
+                AudioManager.Instance.PlaySFX("Embranchement");
                 inMove = true;
                 spline = jpd.SplineRight;
                 junctionMoveTimer = 0f;

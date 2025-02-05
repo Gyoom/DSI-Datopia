@@ -133,6 +133,8 @@ public class UIManager : MonoBehaviour
         }
         textLeft.transform.parent.gameObject.SetActive(true);
         textRight.transform.parent.gameObject.SetActive(true);
+
+        AudioManager.Instance.PlaySFX("Panneaux");
     }
 
     private ThemePair GetNextThemePair()
