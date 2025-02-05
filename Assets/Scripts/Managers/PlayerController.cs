@@ -181,7 +181,9 @@ public class PlayerController : MonoBehaviour
         // player swip
         if (!find) {
             Vector2 SwipeDir = GetSwipDir();
-   
+
+            AudioManager.Instance.PlaySFX("Swipe");
+
             if (SwipeDir.x > 0f)
                 WaysInputs(true);
             else if (SwipeDir.x < 0f)
