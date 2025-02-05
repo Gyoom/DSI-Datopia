@@ -253,10 +253,12 @@ public class PlayerController : MonoBehaviour
 
         // est ce qu'on peut changer de voies en saut ?
         transform.DOMoveY(transform.position.y + jumpStrength, jumpDelay).SetEase(jumpCurve);
+        AudioManager.Instance.PlaySFX("Saut");
         yield return new WaitForSeconds(jumpDelay);
         GameObject splash = Instantiate(splashPrefab, splashPos.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
         trailActive = true;
         inMove = false;
+        AudioManager.Instance.PlaySFX("Atterrissage");
         yield return new WaitForSeconds(splashPrefab.GetComponent<ParticleSystem>().main.duration);
         Destroy(splash);
     }

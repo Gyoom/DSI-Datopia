@@ -54,7 +54,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: bda72c9a9ac0dd947880dabc6d934345, type: 3}
   - name: Saut
     clip: {fileID: 8300000, guid: 5ab2db578c1683342acd2f3f1368bfc9, type: 3}
-  - name: Atterissage
+  - name: Atterrissage
     clip: {fileID: 8300000, guid: ca89e40eb98e1194c929c24f5b2a0f64, type: 3}
   - name: Reculade
     clip: {fileID: 8300000, guid: 612b3e369330eaa4bb6b926c829b69f6, type: 3}
@@ -118,7 +118,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
