@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("JunctionMove")]
     [SerializeField] private float junctionMoveDelay = 0.5f;
+    private float junctionMoveTimer = 0f;
+    private SplineContainer spline;
+
 
     [Header("JumpMove")]
     [SerializeField] private float jumpStrength = 8f;
@@ -114,8 +117,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        // Junction Move
+        if (spline)
+        {
+            JunctionMove();
+        }
+    }
+
     private IEnumerator TrailLife() {
-        GameObject trail = Instantiate(trailPrefab, trails.position, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
+        GameObject trail = Instantiate(trailPrefab, trails.position, Quaternion.identity, ScrollingManager.instance.propsParent);
         float time = 0;
         float localDuration = trailDuration;
         Vector3 newScale = trail.transform.localScale;
@@ -291,7 +303,9 @@ public class PlayerController : MonoBehaviour
 
         switch (currentSide) { 
             case Way.Left:
-                StartCoroutine(JunctionMove(jpd.SplineLeft));
+                inMove = true;
+                spline = jpd.SplineLeft;
+                junctionMoveTimer = 0f;
 
                 ScrollingManager.instance.xValue -= offSet;
                 xCenterValue -= offSet;
@@ -305,7 +319,9 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case Way.Right:
-                StartCoroutine(JunctionMove(jpd.SplineRight));
+                inMove = true;
+                spline = jpd.SplineRight;
+                junctionMoveTimer = 0f;
 
                 ScrollingManager.instance.xValue += offSet;
                 xCenterValue += offSet;
@@ -319,66 +335,58 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator JunctionMove(SplineContainer spline) {
-        // Spline move
-        float time = 0;
-
+    private void JunctionMove() {
         Vector3 newPlayerPos = transform.position;
         Vector3 playerDir = transform.forward;
         Quaternion playerRot = Quaternion.identity;
 
-        float Duration = junctionMoveDelay;
-        float progressValue = 0f;
+        float progressValue = junctionMoveTimer / junctionMoveDelay;
 
-        var forward = Vector3.forward;
-        var up = Vector3.up;
+        // Pos
+        newPlayerPos.x = spline.EvaluatePosition(progressValue).x;
+        transform.position = newPlayerPos;
 
-        while (time < Duration)
+        // Dir
+        playerDir = spline.EvaluateTangent(progressValue);
+        if (Vector3.Magnitude(playerDir) <= Mathf.Epsilon)
         {
-            inMove = true;
-            progressValue = time / Duration;
- 
-            // Pos
-            newPlayerPos.x = spline.EvaluatePosition(progressValue).x;
-            transform.position = newPlayerPos;
-
-            // Dir
-            playerDir = spline.EvaluateTangent(progressValue);
-            if (Vector3.Magnitude(playerDir) <= Mathf.Epsilon)
-            {
-                if (progressValue < 1f)
-                    playerDir = spline.EvaluateTangent(Mathf.Min(1f, progressValue + 0.01f));
-                else
-                    playerDir = spline.EvaluateTangent(progressValue - 0.01f);
-            }
-            playerDir.Normalize();
-
-            // Rot
-            playerRot = Quaternion.LookRotation(playerDir, up);
-            transform.rotation = playerRot;
-
-            time += Time.deltaTime;
-
-            yield return null;
+            if (progressValue < 1f)
+                playerDir = spline.EvaluateTangent(Mathf.Min(1f, progressValue + 0.01f));
+            else
+                playerDir = spline.EvaluateTangent(progressValue - 0.01f);
         }
+        playerDir.Normalize();
 
-        inMove = false;
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
-        // UI Update
-        UIManager.Instance.UpdateJunctionText();
+        // Rot
+        playerRot = Quaternion.LookRotation(playerDir, Vector3.up);
+        transform.rotation = playerRot;
+
+        junctionMoveTimer += Time.deltaTime;
+
+        // endMove
+        if (junctionMoveTimer >= junctionMoveDelay)
+        {
+            junctionMoveTimer = 0;
+            spline = null;
+            inMove = false;
+
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+            // UI Update
+            UIManager.Instance.UpdateJunctionText();
         
-        int doubleBlockCount = 0;
-        foreach (var block in ScrollingManager.instance.blocks) {
-            if (block.name == doubleBlockPrefab.name + "(Clone)") { 
-                doubleBlockCount++;
+            int doubleBlockCount = 0;
+            foreach (var block in ScrollingManager.instance.blocks) {
+                if (block.name == doubleBlockPrefab.name + "(Clone)") { 
+                    doubleBlockCount++;
+                }
             }
+
+            UIManager.Instance.distanceBeforeNextChoice = ( 
+                ScrollingManager.instance.blocksCountBeforeJunction + doubleBlockCount
+            ) * ScrollingManager.instance.BlockLength + transform.position.z;
+
+            UIManager.Instance.traveledDistance = 0f;
         }
-
-        UIManager.Instance.distanceBeforeNextChoice = ( 
-            ScrollingManager.instance.blocksCountBeforeJunction + doubleBlockCount
-        ) * ScrollingManager.instance.BlockLength + transform.position.z;
-
-        UIManager.Instance.traveledDistance = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
