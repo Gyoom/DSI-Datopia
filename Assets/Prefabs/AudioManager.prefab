@@ -65,7 +65,7 @@ MonoBehaviour:
   - name: "D\xE9but"
     clip: {fileID: 0}
   - name: Fin
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f3c20a8082adaa441969717c754a090f, type: 3}
   - name: Embranchement
     clip: {fileID: 8300000, guid: 4b473a4108d4e5b4797b6d6bee543fff, type: 3}
   - name: Panneaux

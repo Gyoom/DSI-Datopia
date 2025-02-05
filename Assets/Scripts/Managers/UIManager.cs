@@ -255,6 +255,7 @@ public class UIManager : MonoBehaviour
     }
 
     private IEnumerator DisplayEnd() {
+        AudioManager.Instance.PlaySFX("Fin");
         endText.gameObject.SetActive(true);
         endText.text = " You have chosen : " + previousChoices[3].Name; 
         replayButton.gameObject.SetActive(true);
