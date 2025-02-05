@@ -404,6 +404,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator ImpactVfx(Vector3 pos) {
+        AudioManager.Instance.PlaySFX("Reculade");
         GameObject impact = Instantiate(impactPrefab, pos, Quaternion.identity, ScrollingManager.instance.gameObject.transform.GetChild(0));
         for (int i = 0; i < impact.transform.childCount; i++)
         {
