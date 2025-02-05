@@ -142,7 +142,7 @@ public class ScrollingManager : MonoBehaviour
 
     public IEnumerator ComeBack(float hitRecoil)
     {
-        PlayerController.Instance.inMove = true;
+        PlayerController.Instance.canJump = false;
         if (hitRecoil == -1f)
             hitRecoil = comebackAmount;
 
@@ -154,10 +154,8 @@ public class ScrollingManager : MonoBehaviour
         }
         yield return new WaitForSeconds(comebackDelay);
 
+        PlayerController.Instance.canJump = true;
         UIManager.Instance.Travel(-hitRecoil);
         isScrolling = true;
-        PlayerController.Instance.inMove = false;
-        Debug.Log("CanMove again");
-
     }
 }
