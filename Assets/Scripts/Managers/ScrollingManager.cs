@@ -92,6 +92,9 @@ public class ScrollingManager : MonoBehaviour
         if (moveCount >= BlockLength) {
             GameObject newBlockPrefab = GetNextBlock();
             GameObject temp = Instantiate(newBlockPrefab, blocksParent);
+            if (temp.GetComponent<DoubleConstructor>()) {
+                temp.GetComponent<DoubleConstructor>().Instantiate(rights[Random.Range(0, rights.Count)]);
+            }
 
             Vector3 tempPos = new Vector3(xValue, 0, blockOffset + blocks[blocks.Count - 1].transform.position.z + BlockLength);
             temp.transform.localPosition = tempPos;
@@ -139,6 +142,7 @@ public class ScrollingManager : MonoBehaviour
 
     public IEnumerator ComeBack(float hitRecoil)
     {
+        PlayerController.Instance.inMove = true;
         if (hitRecoil == -1f)
             hitRecoil = comebackAmount;
 
@@ -152,6 +156,8 @@ public class ScrollingManager : MonoBehaviour
 
         UIManager.Instance.Travel(-hitRecoil);
         isScrolling = true;
+        PlayerController.Instance.inMove = false;
+        Debug.Log("CanMove again");
 
     }
 }
