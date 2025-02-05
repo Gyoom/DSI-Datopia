@@ -293,10 +293,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000038146973
       objectReference: {fileID: 0}
-    - target: {fileID: 1411078052431594438, guid: be45aa7ec53a0874ea62c22b41c72b0b, type: 3}
-      propertyPath: hitRecoil
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 2866525868018304439, guid: be45aa7ec53a0874ea62c22b41c72b0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.01
@@ -497,10 +493,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000038146973
       objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -616,10 +608,6 @@ PrefabInstance:
     - target: {fileID: 309604699010797878, guid: be45aa7ec53a0874ea62c22b41c72b0b, type: 3}
       propertyPath: m_Center.z
       value: 0.000038146973
-      objectReference: {fileID: 0}
-    - target: {fileID: 1411078052431594438, guid: be45aa7ec53a0874ea62c22b41c72b0b, type: 3}
-      propertyPath: hitRecoil
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2866525868018304439, guid: be45aa7ec53a0874ea62c22b41c72b0b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1056,10 +1044,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000038146973
       objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1278,10 +1262,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000038146973
       objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1499,10 +1479,6 @@ PrefabInstance:
     - target: {fileID: 2278083723171615114, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
       propertyPath: m_Center.z
       value: 0.000038146973
-      objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

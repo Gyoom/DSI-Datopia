@@ -1177,10 +1177,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000038146973
       objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1620,10 +1616,6 @@ PrefabInstance:
     - target: {fileID: 2278083723171615114, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
       propertyPath: m_Center.z
       value: 0.000038146973
-      objectReference: {fileID: 0}
-    - target: {fileID: 6812927294195646346, guid: 1fdc31d32355aec48a841f2699e67c9e, type: 3}
-      propertyPath: hitRecoil
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
