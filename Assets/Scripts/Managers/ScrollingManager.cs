@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class ScrollingManager : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class ScrollingManager : MonoBehaviour
     public bool isScrolling = true;
     [SerializeField]
     private float backgroundSpeed = 0.1f;
-    [SerializeField]
-    private Transform blocksParent; 
+    [SerializeField] private Transform blocksParent;
+    public Transform propsParent;
     public  List<GameObject> blocks = new List<GameObject>();
     public float BlockLength = 100f;
     [SerializeField]
@@ -62,7 +63,7 @@ public class ScrollingManager : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {   
         if (!isScrolling && blocks.Count > 0)
             return;
@@ -78,6 +79,10 @@ public class ScrollingManager : MonoBehaviour
             if (block.transform.position.z < player.transform.position.z - BlockLength * 2f) { 
                 blocksToDelete.Add(block);
             }
+        }
+        for (int i = 0; i < propsParent.childCount; i++)
+        {
+            propsParent.GetChild(i).position += Vector3.back * move;
         }
         UIManager.Instance.Travel(move);
 
@@ -151,6 +156,10 @@ public class ScrollingManager : MonoBehaviour
         foreach (var block in blocks)
         {
             block.transform.DOMoveZ(block.transform.position.z + hitRecoil, comebackDelay);
+        }
+        for (int i = 0; i < propsParent.childCount; i++)
+        {
+            propsParent.GetChild(i).DOMoveZ(propsParent.GetChild(i).position.z + hitRecoil, comebackDelay);
         }
         yield return new WaitForSeconds(comebackDelay);
 

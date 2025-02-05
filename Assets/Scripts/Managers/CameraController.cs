@@ -22,15 +22,14 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (target)
         {
             // all directions camera follow
             Vector3 newPos = target.position + posOffset;
             newPos.y = transform.position.y;
-            transform.position = Vector3.SmoothDamp(transform.position, newPos, ref currentVelocity, smoothTime);
-
+            transform.position = Vector3.Lerp(transform.position, newPos, smoothTime * Time.deltaTime);
         }
     }
 }

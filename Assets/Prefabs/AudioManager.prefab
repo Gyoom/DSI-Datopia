@@ -48,10 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Ambiance
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4e947642b59a8614fa672132ae221342, type: 3}
   sfxSounds:
-  - name: "Avanc\xE9e"
-    clip: {fileID: 0}
   - name: "D\xE9placement Lat\xE9ral"
     clip: {fileID: 8300000, guid: bda72c9a9ac0dd947880dabc6d934345, type: 3}
   - name: Saut
@@ -69,9 +67,9 @@ MonoBehaviour:
   - name: Fin
     clip: {fileID: 0}
   - name: Embranchement
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4b473a4108d4e5b4797b6d6bee543fff, type: 3}
   - name: Panneaux
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: bda12631639403a4ea339d49ce6df992, type: 3}
   musicSource: {fileID: 3031188419312134610}
   sfxSource: {fileID: 466176689042488287}
 --- !u!1 &2847927653490720671
