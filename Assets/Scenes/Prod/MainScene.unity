@@ -2303,6 +2303,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2424150402605136382, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: FPSActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424150402605136382, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
       propertyPath: neutralValue
       value: 30
       objectReference: {fileID: 0}
