@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: BaladeEnForet
   m_EditorClassIdentifier: 
-  Name: Walk around the city
-  Description: Walk around the city
+  Name: Forest walk
+  Description: Forest walk
   associatedThemes:
   - {fileID: 11400000, guid: 7701ed42b0223ad4e8b656057b7c998c, type: 2}
   - {fileID: 11400000, guid: 6f07a88c28cd24940929c4967cdfdf73, type: 2}
   - {fileID: 11400000, guid: 882ba8590fed8ef4eb4725d43e0229cc, type: 2}
   - {fileID: 11400000, guid: 1841937a933636949872a09d77a6e57a, type: 2}
-  - {fileID: 11400000, guid: d3a4a648d454a784095205cd9109fbc7, type: 2}
+  - {fileID: 11400000, guid: 83689980acb33d146826edd4c3ed6388, type: 2}
   - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
-  - {fileID: 11400000, guid: 8201474cb30f79c4aaf0c85932f176f2, type: 2}
-  - {fileID: 11400000, guid: 642cb074a808dfb4882110cc32534e44, type: 2}
   - {fileID: 11400000, guid: 9f9ff2a35592e68479f1a28eb509cb83, type: 2}
   - {fileID: 11400000, guid: 16b9852c1f87d9c49bef1cdf3a56f18a, type: 2}
   - {fileID: 11400000, guid: 41b74f3f0c0a5e5489d013d33792f670, type: 2}
