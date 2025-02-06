@@ -2,8 +2,10 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -25,7 +27,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public List<JunctionOption> previousChoices = new List<JunctionOption>();
 
     [Header("Dates")]
-    [SerializeField] private List<Activity> Activities = new List<Activity>();
+    [SerializeField] private List<Activity> defaultActivities;
 
     [Header("End")]
     [SerializeField] private float fadeDuration = 2.0f;
@@ -60,6 +62,9 @@ public class UIManager : MonoBehaviour
     float frames;
     float timeLeft;
 
+    // Dates
+    private List<Activity> AllActivities = new List<Activity>();
+
     private void Awake()
     {
         Application.targetFrameRate = Mathf.FloorToInt((float)Screen.currentResolution.refreshRateRatio.value);
@@ -68,7 +73,18 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        // progress bar animation
         goal.DOScale(scaleRange.y, scaleDuration).From(scaleRange.x).SetLoops(-1, LoopType.Yoyo);
+       
+        // data storing
+        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Datas/Activities" });
+      
+        foreach (string SOName in assetNames)
+        {
+            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
+            var newActivity = AssetDatabase.LoadAssetAtPath<Activity>(SOpath);
+            AllActivities.Add(newActivity);
+        }
     }
 
     private void Update()
@@ -145,48 +161,20 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.PlaySFX("Panneaux");
     }
 
-    private ThemePair GetNextThemePair()
-    {
-        ThemesByTier currentTier = ThemesTiers[currentTierIndex];
-        List<ThemePair> tempList = new List<ThemePair>();
-
-        foreach (var item in currentTier.choiceList)
-        {
-            if (!usedPairs.Contains(item))
-                tempList.Add(item);
-        }
-
-        if (tempList.Count == 0)
-            return null;
-        else
-        {
-            ThemePair currentPair = tempList[Random.Range(0, tempList.Count)];
-            usedPairs.Add(currentPair);
-            
-            currentTierUseCount++;
-            if (currentTierUseCount == nbrUseByTier)
-            {
-                currentTierUseCount = 0;
-                currentTierIndex++;
-                if (currentTierIndex >= ThemesTiers.Count)
-                    gameStep = GameStep.Dates;
-            }
-
-            return currentPair;
-        }
-    }
-
     private void DisplayDates()
     {
         List<Activity> ActivityPair = GetActivityPair();
 
         int ran = Random.Range(0, 2);
-        if (ran == 0) {
+        if (ran == 0)
+        {
             textLeft.text = ActivityPair[0].Description;
             textRight.text = ActivityPair[1].Description;
             currentLeft = ActivityPair[0];
             currentRight = ActivityPair[1];
-        } else {
+        }
+        else
+        {
             textLeft.text = ActivityPair[1].Description;
             textRight.text = ActivityPair[0].Description;
             currentLeft = ActivityPair[1];
@@ -196,78 +184,11 @@ public class UIManager : MonoBehaviour
         textRight.transform.parent.gameObject.SetActive(true);
     }
 
-    private List<Activity> GetActivityPair() {
-        List<Activity> MatchedActivities = new List<Activity>();
-
-        for (int i = previousChoices.Count; i > 0; i--) // nbr match required
-        {
-            foreach (var item in Activities) // check every activity
-            {
-                bool match = true;
-                for (int j = 0; j < i; j++) { // check if current activity have the required match count
-                    if (!item.associatedThemes.Contains((Theme) previousChoices[j])) 
-                        match = false;
-                }
-                
-                if (match)
-                    MatchedActivities.Add(item);
-            }
-
-            if (MatchedActivities.Count >= 2) 
-                break;
-            else 
-                MatchedActivities.Clear();
-        }
-
-        // Debug info
-        if (MatchedActivities.Count < 2)
-        {
-            string errorMsg = "";
-            foreach (var item in previousChoices)
-                errorMsg += item.Name + " ";
-            Debug.Log("Error : no corresponding activity found with [" + errorMsg + "]");
-        }
-
-        // Get Random activity in matched pool
-        List<Activity> pair = new List<Activity>();
-
-        if (MatchedActivities.Count >= 2)
-        {
-            int ran = Random.Range(0, MatchedActivities.Count);
-            pair.Add(MatchedActivities[ran]);
-            MatchedActivities.RemoveAt(ran);
-
-            ran = Random.Range(0, MatchedActivities.Count);
-            pair.Add(MatchedActivities[ran]);
-        }
-        else {
-            int ran = Random.Range(0, Activities.Count);
-            pair.Add(Activities[ran]);
-            Activities.RemoveAt(ran);
-
-            ran = Random.Range(0, Activities.Count);
-            pair.Add(Activities[ran]);
-        }
-
-        return pair;
-    }
-
-    public void EmptyJonctionText(int choice) {
-
-       
-        if (choice == -1)
-            previousChoices.Add(currentLeft);
-        if (choice == 1)
-            previousChoices.Add(currentRight);
-
-        textLeft.transform.parent.gameObject.SetActive(false);
-        textRight.transform.parent.gameObject.SetActive(false);
-    }
-
-    private IEnumerator DisplayEnd() {
+    private IEnumerator DisplayEnd()
+    {
         AudioManager.Instance.PlaySFX("Fin");
         endText.gameObject.SetActive(true);
-        endText.text = " You have chosen : " + previousChoices[3].Name; 
+        endText.text = " You have chosen : " + previousChoices[3].Name;
         replayButton.gameObject.SetActive(true);
         placesText.gameObject.SetActive(true);
 
@@ -304,6 +225,147 @@ public class UIManager : MonoBehaviour
         blackScreenUIElement.alpha = 1;
 
         ScrollingManager.instance.isScrolling = false;
+    }
+
+    public void EmptyJonctionText(int choice)
+    {
+
+
+        if (choice == -1)
+            previousChoices.Add(currentLeft);
+        if (choice == 1)
+            previousChoices.Add(currentRight);
+
+        textLeft.transform.parent.gameObject.SetActive(false);
+        textRight.transform.parent.gameObject.SetActive(false);
+    }
+
+    private ThemePair GetNextThemePair()
+    {
+        ThemesByTier currentTier = ThemesTiers[currentTierIndex];
+        List<ThemePair> tempList = new List<ThemePair>();
+
+        foreach (var item in currentTier.choiceList)
+        {
+            if (!usedPairs.Contains(item))
+                tempList.Add(item);
+        }
+
+        if (tempList.Count == 0)
+            return null;
+        else
+        {
+            ThemePair currentPair = tempList[Random.Range(0, tempList.Count)];
+            usedPairs.Add(currentPair);
+            
+            currentTierUseCount++;
+            if (currentTierUseCount == nbrUseByTier)
+            {
+                currentTierUseCount = 0;
+                currentTierIndex++;
+                if (currentTierIndex >= ThemesTiers.Count)
+                    gameStep = GameStep.Dates;
+            }
+
+            return currentPair;
+        }
+    }
+
+    private List<Activity> GetActivityPair() {
+        List<Activity> validActivities = new List<Activity>(AllActivities);
+
+        // remove opposed activities
+        for (int i = 0; i < previousChoices.Count; i++)
+        {
+            //Find bad Theme
+            ThemePair currentPair = usedPairs[i];
+            Theme badTheme;
+
+            if (currentPair.first == previousChoices[i])
+            {
+                badTheme = currentPair.second;
+            } else { 
+                badTheme = currentPair.first;
+            }
+            
+            // remove activity with bad theme
+            List<Activity> ActivitiesToRemove = new List<Activity>();
+            
+            foreach (var activity in validActivities)
+            {
+                if (activity.associatedThemes.Contains(badTheme)) { 
+                    ActivitiesToRemove.Add(activity);
+                }
+            }
+
+            foreach (var activity in ActivitiesToRemove)
+            {
+                validActivities.Remove(activity);
+            }
+
+        }
+
+        List<Activity> MatchedActivities = new List<Activity>();
+
+        if (validActivities.Count < 2)
+        {
+            Debug.Log("Error : no valid activity found");
+            MatchedActivities = new List<Activity>(defaultActivities);
+        }
+        else
+        {
+            for (int i = previousChoices.Count; i > 0; i--) // nbr match required
+            {
+                foreach (var item in validActivities) // check every activity
+                {
+                    bool match = true;
+                    for (int j = 0; j < i; j++)
+                    { // check if current activity have the required match count
+                        if (!item.associatedThemes.Contains((Theme)previousChoices[j]))
+                            match = false;
+                    }
+
+                    if (match)
+                        MatchedActivities.Add(item);
+                }
+
+                if (MatchedActivities.Count >= 2)
+                    break;
+                else
+                    MatchedActivities.Clear();
+            }
+
+            // Debug info
+            if (MatchedActivities.Count < 2)
+            {
+                Debug.Log("Error : no matching activity found");
+                MatchedActivities = new List<Activity>(defaultActivities);
+            }
+
+        }
+
+        // Get Random activity in matched pool
+        List<Activity> pair = new List<Activity>();
+
+        if (MatchedActivities.Count >= 2)
+        {
+            int ran = Random.Range(0, MatchedActivities.Count);
+            pair.Add(MatchedActivities[ran]);
+            MatchedActivities.RemoveAt(ran);
+
+            ran = Random.Range(0, MatchedActivities.Count);
+            pair.Add(MatchedActivities[ran]);
+        }
+        else {
+            int ran = Random.Range(0, AllActivities.Count);
+            pair.Add(AllActivities[ran]);
+            AllActivities.RemoveAt(ran);
+
+            ran = Random.Range(0, AllActivities.Count);
+            pair.Add(AllActivities[ran]);
+        }
+
+        return pair;
     }
 
     public void StartNewGame()
