@@ -26,10 +26,11 @@ public class SinkObstacle : MonoBehaviour {
         Collider.enabled = false;
         transform.parent.DOMoveY(transform.parent.position.y - downAmount, delayMove);
         mr.material = deadCroco;
-        AudioManager.Instance.sfxSource.PlayOneShot(deadCrocoSound);
+        AudioManager.Instance.PlaySFX("Cassure");
         
         yield return new WaitForSeconds(delayMove + delayBerforeUp);
 
+        AudioManager.Instance.PlaySFX("Réapparition");
         Collider.enabled = true;
         transform.parent.DOMoveY(transform.parent.position.y + downAmount, delayMove);
         mr.material = aliveCroco;
