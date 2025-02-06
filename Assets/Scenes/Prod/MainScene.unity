@@ -2314,6 +2314,18 @@ PrefabInstance:
       propertyPath: scaleDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2424150402605136382, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: defaultActivities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424150402605136382, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: defaultActivities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 73ee0c93e2433334f974a007e319693a, type: 2}
+    - target: {fileID: 2424150402605136382, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: defaultActivities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 24a91e80120181049b00346ed5e580bb, type: 2}
     - target: {fileID: 2810879945079583590, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2393,6 +2405,22 @@ PrefabInstance:
     - target: {fileID: 2810879945079583590, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840795510333092079, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840795510333092079, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279185492
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666246258202107560, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666246258202107560, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279185492
       objectReference: {fileID: 0}
     - target: {fileID: 7162506493038949313, guid: e246ae9cbc17e4e4d9b7c42509907490, type: 3}
       propertyPath: m_AnchorMax.y

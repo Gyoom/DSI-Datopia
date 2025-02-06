@@ -75,15 +75,13 @@ public class UIManager : MonoBehaviour
     {
         // progress bar animation
         goal.DOScale(scaleRange.y, scaleDuration).From(scaleRange.x).SetLoops(-1, LoopType.Yoyo);
-       
+
         // data storing
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Datas/Activities" });
-      
-        foreach (string SOName in assetNames)
+        Object[] assets = Resources.LoadAll("Datas/Activities", typeof(Activity));
+   
+        foreach (var asset in assets)
         {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var newActivity = AssetDatabase.LoadAssetAtPath<Activity>(SOpath);
-            AllActivities.Add(newActivity);
+            AllActivities.Add((Activity) asset);
         }
     }
 
