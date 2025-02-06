@@ -51,7 +51,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4e947642b59a8614fa672132ae221342, type: 3}
   sfxSounds:
   - name: Swipe
-    clip: {fileID: 8300000, guid: bda72c9a9ac0dd947880dabc6d934345, type: 3}
+    clip: {fileID: 8300000, guid: caa76baea205218499f66633fb37eef1, type: 3}
   - name: Saut
     clip: {fileID: 8300000, guid: 5ab2db578c1683342acd2f3f1368bfc9, type: 3}
   - name: Atterrissage
@@ -62,8 +62,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1d3a80e6fe92c4c42ada4bf3d294dc5d, type: 3}
   - name: "D\xE9calage"
     clip: {fileID: 8300000, guid: 479d259dda218be49a1f23d378cba5d5, type: 3}
-  - name: "D\xE9but"
-    clip: {fileID: 0}
   - name: Fin
     clip: {fileID: 8300000, guid: f3c20a8082adaa441969717c754a090f, type: 3}
   - name: Embranchement
