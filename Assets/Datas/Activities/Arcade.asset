@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc21db55b6217c4e8045c1ddf854bf0, type: 3}
   m_Name: Arcade
   m_EditorClassIdentifier: 
-  nom: 
   Name: Arcade
-  AcivityName: Arcade
   Description: Arcade
   associatedThemes:
   - {fileID: 11400000, guid: db4db0d44d4c7bd4e8031389ced93056, type: 2}
@@ -26,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a89a7c9f56c33c428e081bab8be7052, type: 2}
   - {fileID: 11400000, guid: 563d66756f2cba145a307b3a73da778f, type: 2}
   - {fileID: 11400000, guid: 9a55679ca48fff04a97400a8479eea15, type: 2}
+  - {fileID: 11400000, guid: 16b9852c1f87d9c49bef1cdf3a56f18a, type: 2}
